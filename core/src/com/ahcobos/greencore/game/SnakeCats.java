@@ -6,6 +6,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+/**
+ * @author ahcobos
+ * @since 2014-10-29 13:02:35
+ */
 public class SnakeCats extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;

@@ -1,5 +1,9 @@
 package com.ahcobos.greencore.exceptions;
 
+/**
+ * @author ahcobos
+ * @since 2014-10-29 13:02:35
+ */
 public abstract class GCException extends Exception {
 
 	/**

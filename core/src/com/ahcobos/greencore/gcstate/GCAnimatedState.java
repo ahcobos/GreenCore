@@ -4,6 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
+/**
+ * @author ahcobos
+ * @since 2014-10-29 13:02:35
+ */
 public class GCAnimatedState extends GCBaseState {
 	
 	private Animation a;

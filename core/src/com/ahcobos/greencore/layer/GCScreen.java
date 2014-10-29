@@ -5,6 +5,10 @@ import java.util.HashMap;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
 
+/**
+ * @author ahcobos
+ * @since 2014-10-29 13:02:35
+ */
 public abstract class GCScreen  extends ScreenAdapter{
 
 	public abstract HashMap<String, GCLayer> getLayers();	

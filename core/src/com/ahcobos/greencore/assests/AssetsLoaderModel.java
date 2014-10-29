@@ -1,6 +1,5 @@
 package com.ahcobos.greencore.assests;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
@@ -9,6 +8,10 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
+/**
+ * @author ahcobos
+ * @since 2014-10-29 13:02:35
+ */
 public class AssetsLoaderModel{
 	
 	private static HashMap<String,Texture> textures ;

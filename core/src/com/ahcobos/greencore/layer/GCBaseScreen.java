@@ -4,6 +4,10 @@ import java.util.HashMap;
 
 import com.badlogic.gdx.graphics.Camera;
 
+/**
+ * @author ahcobos
+ * @since 2014-10-29 13:02:35
+ */
 public class GCBaseScreen extends GCScreen {
 	private HashMap<String, GCLayer> mLayers;
 	private Camera mCamera;

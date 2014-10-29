@@ -10,6 +10,10 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 
+/**
+ * @author ahcobos
+ * @since 2014-10-29 13:02:35
+ */
 public class OrthographicCameraExample implements ApplicationListener {
 	
 	static final int WORLD_WIDTH = 100;
