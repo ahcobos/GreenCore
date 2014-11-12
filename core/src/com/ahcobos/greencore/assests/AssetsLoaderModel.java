@@ -45,6 +45,13 @@ public class AssetsLoaderModel{
 		AssetsLoaderModel.textures.put(key, mTexture);
 	}
 	
+	public static void addTexture(String TextureLocation, String key)
+	{
+		Texture mTexture = new Texture(Gdx.files.internal(TextureLocation));
+		System.out.println("a intsertar textura "+ TextureLocation);
+		AssetsLoaderModel.textures.put(key, mTexture);
+	}
+	
 	public static Texture getTexture(String key)
 	{
 		return AssetsLoaderModel.textures.get(key);

@@ -9,5 +9,5 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  * @since 2014-11-02 21:49:01
  */
 public abstract class GCRenderer {
-	public abstract void render(); 
+	public abstract void render(SpriteBatch bactch); 
 }
