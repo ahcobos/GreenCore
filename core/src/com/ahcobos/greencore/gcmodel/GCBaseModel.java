@@ -52,7 +52,7 @@ public class GCBaseModel extends GCModel {
 
 	@Override
 	public GCState getCurrentState() {
-		return this.getCurrentState();
+		return this.currentState;
 	}
 
 	@Override

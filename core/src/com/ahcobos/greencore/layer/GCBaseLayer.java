@@ -15,6 +15,7 @@ public class GCBaseLayer extends GCLayer{
 	
 	public GCBaseLayer(String name) {
 		this.name = name;
+		this.elements = new HashMap<String, GCModel>();
 	}
 
 	public String getName() {
