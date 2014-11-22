@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 
 /**
  * @author ahcobos
@@ -33,7 +34,6 @@ public class GreenCoreGame extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 		new AssetsLoaderModel();
-//		img = new Texture("badlogic.jpg");
 		AssetsLoaderModel.addTexture("badlogic.jpg", "basica");
 		
 		this.smileFace.setName("smile");
@@ -43,6 +43,8 @@ public class GreenCoreGame extends ApplicationAdapter {
 		this.mFace.setCurrentState("sonriendo");
 		
 		this.mLayer.addElement("smile", this.mFace);
+		
+		this.mFace.setPosition(new Vector2(10,10));
 		
 		
 		this.mRenderer = new GCBaseLayerRenderer(this.mLayer);

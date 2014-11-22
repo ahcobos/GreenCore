@@ -5,6 +5,7 @@ import java.util.HashMap;
 import com.ahcobos.greencore.gcstate.GCState;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 
 /**
  * @author ahcobos
@@ -19,6 +20,7 @@ public abstract class GCModel {
 	public abstract GCState getCurrentState();
 	public abstract float getX();
 	public abstract float getY();
+	public abstract Vector2 getPosition();
 	public abstract float getOriginX();
 	public abstract float getOriginY();
 	public abstract float getWidth();//necesary? it should be keeped in the state 	
@@ -27,4 +29,11 @@ public abstract class GCModel {
 	public abstract float getScaleX();
 	public abstract float getScaleY();
 	public abstract void draw(SpriteBatch batch);
+	
+	//=================================
+	//setters 
+	//=================================
+	
+	public abstract void setPosition(Vector2 newPos);
+	
 }

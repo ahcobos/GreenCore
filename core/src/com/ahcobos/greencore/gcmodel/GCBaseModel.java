@@ -5,6 +5,7 @@ import java.util.HashMap;
 import com.ahcobos.greencore.gcstate.GCState;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 
 /**
  * @author ahcobos
@@ -14,14 +15,17 @@ public class GCBaseModel extends GCModel {
 	
 	private HashMap<String,GCState> states ;
 	private GCState currentState;
-	private float x , y, originX, originY, width, height ;
+	private float originX, originY, width, height ;
 	private float rotation, scaleX, scaleY;
+	private Vector2 position;
+	
 	public void setStates(HashMap<String, GCState> states) {
 		this.states = states;
 	}
 
 	public GCBaseModel() {
 		this.states = new HashMap<String, GCState>();
+		this.position = new Vector2(0,0);
 	}
 
 	@Override
@@ -57,12 +61,12 @@ public class GCBaseModel extends GCModel {
 
 	@Override
 	public float getX() {
-		return this.x;
+		return this.position.x;
 	}
 
 	@Override
 	public float getY() {
-		return this.y;
+		return this.position.y;
 	}
 
 	@Override
@@ -102,7 +106,22 @@ public class GCBaseModel extends GCModel {
 
 	@Override
 	public void draw(SpriteBatch batch) {
-		this.getCurrentState().getSprite().draw(batch);
+		Sprite toDraw = this.getCurrentState().getSprite();
+		toDraw.setPosition(getX(), getY());
+//		toDraw.setRotation(this.getRotation());
+//		toDraw.setScale(getScaleX(), getScaleY());
+		toDraw.draw(batch);
+	}
+
+	@Override
+	public void setPosition(Vector2 newPos) {
+		this.position = newPos;
+		
+	}
+
+	@Override
+	public Vector2 getPosition() {
+		return this.position;
 	}
 
 }

@@ -11,6 +11,10 @@ import com.badlogic.gdx.graphics.Camera;
 public class GCBaseScreen extends GCScreen {
 	private HashMap<String, GCLayer> mLayers;
 	private Camera mCamera;
+	
+	public GCBaseScreen() {
+		this.mLayers = new HashMap<String, GCLayer>();
+	}
 
 	public HashMap<String, GCLayer> getLayers() {
 		return mLayers;
