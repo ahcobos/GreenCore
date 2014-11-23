@@ -10,10 +10,12 @@ public class GCBaseLayerRenderer extends GCRenderer {
 		this.mLayer = layer;
 	}
 	@Override
-	public void render(SpriteBatch batch) {
+	public void render(SpriteBatch batch, float deltaTime) {
+		batch.begin();
 		for (String key : this.mLayer.getElements().keySet()) {
 			this.mLayer.getElements().get(key).draw(batch);
 		}
+		batch.end();
 	}
 
 }

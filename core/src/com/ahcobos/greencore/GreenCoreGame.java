@@ -55,7 +55,7 @@ public class GreenCoreGame extends ApplicationAdapter {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		this.mRenderer.render(batch);
+		this.mRenderer.render(batch, 0f);
 		batch.end();
 	}
 }

@@ -3,6 +3,7 @@ package com.ahcobos.greencore.layer;
 import java.util.HashMap;
 
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
  * @author ahcobos
@@ -11,9 +12,11 @@ import com.badlogic.gdx.graphics.Camera;
 public class GCBaseScreen extends GCScreen {
 	private HashMap<String, GCLayer> mLayers;
 	private Camera mCamera;
+	private SpriteBatch batch;
 	
 	public GCBaseScreen() {
 		this.mLayers = new HashMap<String, GCLayer>();
+		this.batch = new SpriteBatch();
 	}
 
 	public HashMap<String, GCLayer> getLayers() {
@@ -47,5 +50,57 @@ public class GCBaseScreen extends GCScreen {
 	@Override
 	public void setCamera(Camera mCamera) {
 		this.setCamera(mCamera);
+	}
+
+	@Override
+	public void render(float delta) {
+		System.out.println("from the hell");
+		for (String key : this.mLayers.keySet()) {
+			this.mLayers.get(key).getRenderer().render(this.batch, delta);
+		}
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void show() {
+	}
+
+	@Override
+	public void hide() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void resume() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void dispose() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public SpriteBatch getBatch() {
+		return this.batch;
+	}
+
+	@Override
+	public void setBatch(SpriteBatch mBatch) {
+		this.batch = mBatch;
 	}
 }
