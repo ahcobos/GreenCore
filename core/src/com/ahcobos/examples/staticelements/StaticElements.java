@@ -9,22 +9,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class StaticElements extends Game {
 
-	private FirstScreen mScreen = new FirstScreen();
+	private FirstScreen mScreen;
 
 	@Override
 	public void create() {
 		new AssetsLoaderModel();
 		AssetsLoaderModel.addTexture("badlogic.jpg", "base_image");
+		this.mScreen = new FirstScreen();
 		this.setScreen(mScreen);
-	}
-	
-	@Override
-	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		mScreen.getBatch().begin();
-		mScreen.getmRenderer().render(mScreen.getBatch());
-		mScreen.getBatch().end();
 	}
 
 }

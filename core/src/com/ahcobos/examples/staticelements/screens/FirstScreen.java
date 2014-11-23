@@ -9,7 +9,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class FirstScreen extends GCBaseScreen {
 	
 	private MyLayer mLayer = new MyLayer("init");
-	private SpriteBatch batch;
+	private MyLayer mLayer2 = new MyLayer("init2");
+
 	public MyLayer getmLayer() {
 		return mLayer;
 	}
@@ -17,29 +18,11 @@ public class FirstScreen extends GCBaseScreen {
 	public void setmLayer(MyLayer mLayer) {
 		this.mLayer = mLayer;
 	}
-
-	public SpriteBatch getBatch() {
-		return batch;
-	}
-
-	public void setBatch(SpriteBatch batch) {
-		this.batch = batch;
-	}
-
-	public GCRenderer getmRenderer() {
-		return mRenderer;
-	}
-
-	public void setmRenderer(GCRenderer mRenderer) {
-		this.mRenderer = mRenderer;
-	}
-
-	private GCRenderer mRenderer;
 	
 	public FirstScreen() {
+		super();
 		this.addLayer(mLayer);
-		this.batch = new SpriteBatch();
-		this.mRenderer = new GCBaseLayerRenderer(this.mLayer);
+		this.addLayer(mLayer2);
 	}
 
 }
