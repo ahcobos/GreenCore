@@ -12,7 +12,7 @@ public class GCStaticState extends GCBaseState{
 		
 		private Sprite sprite;
 		
-		public GCStaticState(){}
+		private GCStaticState(){}
 		
 		public GCStaticState(Texture texture){
 			this.sprite = new Sprite(texture);
@@ -36,5 +36,6 @@ public class GCStaticState extends GCBaseState{
 		
 		public GCStaticState(Sprite sprite){
 			this.sprite = sprite;
-		}		
-}
+		}
+	}
+

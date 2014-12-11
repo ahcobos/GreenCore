@@ -26,9 +26,7 @@ public class GCBaseLayer extends GCLayer{
 		return name;
 	}
 	
-	public void update()
-	{
-	}
+	public void update(){}
 
 	@Override
 	public void setName(String name) {
