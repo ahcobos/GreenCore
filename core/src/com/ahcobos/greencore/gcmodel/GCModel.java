@@ -23,8 +23,6 @@ public abstract class GCModel {
 	public abstract Vector2 getPosition();
 	public abstract float getOriginX();
 	public abstract float getOriginY();
-	public abstract float getWidth();//necesary? it should be keeped in the state 	
-	public abstract float getHeight();//necesary?
 	public abstract float getRotation();
 	public abstract float getScaleX();
 	public abstract float getScaleY();

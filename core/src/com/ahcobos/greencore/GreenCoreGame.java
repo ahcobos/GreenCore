@@ -44,7 +44,7 @@ public class GreenCoreGame extends ApplicationAdapter {
 		
 		this.mLayer.addElement("smile", this.mFace);
 		
-		this.mFace.setPosition(new Vector2(10,10));
+		this.mFace.setPosition(new Vector2(100,100));
 		
 		
 		this.mRenderer = new GCBaseLayerRenderer(this.mLayer);

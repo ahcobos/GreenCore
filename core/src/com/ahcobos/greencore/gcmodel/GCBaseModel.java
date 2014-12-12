@@ -15,7 +15,7 @@ public class GCBaseModel extends GCModel {
 	
 	private HashMap<String,GCState> states ;
 	private GCState currentState;
-	private float originX, originY, width, height ;
+	private float originX, originY;
 	private float rotation, scaleX, scaleY;
 	private Vector2 position;
 	
@@ -80,16 +80,6 @@ public class GCBaseModel extends GCModel {
 	}
 
 	@Override
-	public float getWidth() {
-		return this.width;
-	}
-
-	@Override
-	public float getHeight() {
-		return this.height;
-	}
-
-	@Override
 	public float getRotation() {
 		return this.rotation;
 	}
@@ -115,10 +105,9 @@ public class GCBaseModel extends GCModel {
 
 	@Override
 	public void setPosition(Vector2 newPos) {
-		this.position = newPos;
-		
+		this.position = newPos;		
 	}
-
+		
 	@Override
 	public Vector2 getPosition() {
 		return this.position;
