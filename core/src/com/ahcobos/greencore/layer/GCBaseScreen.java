@@ -2,10 +2,12 @@ package com.ahcobos.greencore.layer;
 
 import java.util.HashMap;
 
+import com.ahcobos.greencore.inputprocesors.GCGestureListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.input.GestureDetector;
 
 /**
  * @author ahcobos
@@ -20,7 +22,7 @@ public class GCBaseScreen extends GCScreen {
 		this.mLayers = new HashMap<String, GCLayer>();
 		this.batch = new SpriteBatch();
 		this.mCamera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-        
+		Gdx.input.setInputProcessor(new GestureDetector(new GCGestureListener()));
 	}
 
 	public HashMap<String, GCLayer> getLayers() {
@@ -58,7 +60,6 @@ public class GCBaseScreen extends GCScreen {
 
 	@Override
 	public void render(float delta) {
-		System.out.println("from the hell");
 		this.batch.begin();
 		this.batch.setProjectionMatrix(this.mCamera.combined);
 		for (String key : this.mLayers.keySet()) {
