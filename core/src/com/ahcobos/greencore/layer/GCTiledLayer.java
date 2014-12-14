@@ -28,9 +28,11 @@ public abstract class GCTiledLayer extends GCBaseLayer{
 	public void constructTiledLayer(BufferedImage baseLayerImage){
 		for(int y = 0; y<baseLayerImage.getWidth(); y++){
 			for(int x = 0; x<baseLayerImage.getHeight(); x++){
-				GCTile tile = getTile(new Color(baseLayerImage.getRGB(x, baseLayerImage.getHeight()-y-1)).toString()).clone();
-				tile.setPosition(new Vector2(x*this.getTileSize(), y*this.getTileSize()));
-				addElement(tile.getPosition().toString(), tile);
+				if(getTile(new Color(baseLayerImage.getRGB(x, baseLayerImage.getHeight()-y-1)).toString())!= null){
+					GCTile tile = getTile(new Color(baseLayerImage.getRGB(x, baseLayerImage.getHeight()-y-1)).toString()).clone();
+					tile.setPosition(new Vector2(x*this.getTileSize(), y*this.getTileSize()));
+					addElement(tile.getPosition().toString(), tile);
+				}
 			}
 		}
 	}
