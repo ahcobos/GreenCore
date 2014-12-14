@@ -5,6 +5,7 @@ import com.ahcobos.greencore.gcmodel.GCBaseModel;
 import com.ahcobos.greencore.gcmodel.GCModel;
 import com.ahcobos.greencore.gcstate.GCBaseState;
 import com.ahcobos.greencore.gcstate.GCStaticState;
+import com.ahcobos.greencore.inputprocesors.GCGestureListener;
 import com.ahcobos.greencore.layer.GCBaseLayer;
 import com.ahcobos.greencore.renderer.GCBaseLayerRenderer;
 import com.ahcobos.greencore.renderer.GCRenderer;
@@ -13,6 +14,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -35,6 +37,7 @@ public class GreenCoreGame extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		new AssetsLoaderModel();
 		AssetsLoaderModel.addTexture("badlogic.jpg", "basica");
+		Gdx.input.setInputProcessor(new GestureDetector(new GCGestureListener()));
 		
 		this.smileFace.setName("smile");
 		this.smileFace.setTextureHash("basica");
