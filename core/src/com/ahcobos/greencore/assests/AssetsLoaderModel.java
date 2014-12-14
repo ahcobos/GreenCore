@@ -7,6 +7,8 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 /**
  * @author ahcobos
@@ -14,21 +16,34 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
  */
 public class AssetsLoaderModel{
 	
+	// ===========================================================
+	// Fields
+	// ===========================================================
+
 	private static HashMap<String,Texture> textures ;
 	private static HashMap<String,Sound> sounds ;
 	private static HashMap<String,Music> music ;
 	private static HashMap<String,BitmapFont> fonts ;
-	
+	private static HashMap<String,TextureAtlas> packs ;
 	public static BitmapFont font;
 	
+	// ===========================================================
+	// Constructors
+	// ===========================================================
+
 	public AssetsLoaderModel(){
 		
 		this.textures = new HashMap<String, Texture>();
 		this.sounds = new HashMap<String, Sound>();
 		this.music = new HashMap<String, Music>();
 		this.fonts = new HashMap<String, BitmapFont>();
+		this.packs = new HashMap<String, TextureAtlas>();
 	}
 	
+	// ===========================================================
+	// Getter & Setter
+	// ===========================================================
+
 	public static HashMap<String,Texture> getTextures() {
 		return textures;
 	}
@@ -36,6 +51,26 @@ public class AssetsLoaderModel{
 	public static void setTextures(HashMap<String,Texture> textures) {
 		AssetsLoaderModel.textures = textures;
 	}
+	
+	public static HashMap<String, TextureAtlas> getPacks() {
+		return packs;
+	}
+
+	public static void setPacks(HashMap<String, TextureAtlas> packs) {
+		AssetsLoaderModel.packs = packs;
+	}
+	
+	public static HashMap<String,Sound> getSounds() {
+		return sounds;
+	}
+
+	public static void setSounds(HashMap<String,Sound> sounds) {
+		AssetsLoaderModel.sounds = sounds;
+	}
+	
+	// ===========================================================
+	// Methods
+	// ===========================================================
 	
 	public static void addTexture(String TextureLocation)
 	{
@@ -48,7 +83,6 @@ public class AssetsLoaderModel{
 	public static void addTexture(String TextureLocation, String key)
 	{
 		Texture mTexture = new Texture(Gdx.files.internal(TextureLocation));
-		System.out.println("a intsertar textura "+ TextureLocation);
 		AssetsLoaderModel.textures.put(key, mTexture);
 	}
 	
@@ -67,14 +101,6 @@ public class AssetsLoaderModel{
 		}
 		return false;
 	} 
-	
-	public static HashMap<String,Sound> getSounds() {
-		return sounds;
-	}
-
-	public static void setSounds(HashMap<String,Sound> sounds) {
-		AssetsLoaderModel.sounds = sounds;
-	}
 	
 	public static void addSound(String SoundLocation)
 	{
@@ -103,5 +129,27 @@ public class AssetsLoaderModel{
 	public static void initFont()
 	{
 		AssetsLoaderModel.font = new BitmapFont(Gdx.files.internal("data/font.fnt"), Gdx.files.internal("data/font.png"), false);
+	}
+	
+	public static TextureAtlas getPack(String key)
+	{
+		return AssetsLoaderModel.getPacks().get(key);
+	}
+	
+	public static void addPack(String packLocation, String key)
+	{
+		TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("and_engine.pack"));
+		AssetsLoaderModel.packs.put(key, atlas);
+	}
+	
+	public static boolean removePack(String key)
+	{
+		TextureAtlas pack = AssetsLoaderModel.packs.get(key);
+		if (pack != null)
+		{
+			pack.dispose();
+			return true;
+		}
+		return false;
 	}
 }
