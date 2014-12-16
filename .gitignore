@@ -59,13 +59,10 @@ nb-configuration.xml
 .gradle
 build/
 
-android/
 build.gradle
 core/build.gradle
-desktop/
 gradle/
 gradlew
 gradlew.bat
-html/
-ios/
+
 settings.gradle
