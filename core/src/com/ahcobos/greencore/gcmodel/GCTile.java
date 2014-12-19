@@ -18,16 +18,18 @@ public class GCTile extends GCBaseModel implements Cloneable{
 		this.isObstacle	 = false;
 		this.tileName = assignedColor.toString();
 		this.staticState = new GCStaticState(tileImage);		
-		this.addState(staticState, tileName);		
+		this.addState(staticState, tileName);
+		this.setCurrentState(tileName);
 	}
 		
 	public GCTile(Color assignedColor, Texture tileImage, boolean isObstacle){
 		this.assignedColor = assignedColor;
 		this.tileImage = tileImage;
 		this.isObstacle = isObstacle;
-		this.tileName = assignedColor.toString();		
+		this.tileName = assignedColor.toString();
 		this.staticState = new GCStaticState(tileImage);		
 		this.addState(staticState, tileName);
+		this.setCurrentState(tileName);
 	}
 		
 	public void setTileName(String name){
