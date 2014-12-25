@@ -1,6 +1,6 @@
 package com.ahcobos.greencore.layer;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import com.ahcobos.greencore.inputprocesors.GCGestureListener;
 import com.badlogic.gdx.Gdx;
@@ -14,22 +14,22 @@ import com.badlogic.gdx.input.GestureDetector;
  * @since 2014-10-29 13:02:35
  */
 public class GCBaseScreen extends GCScreen {
-	private HashMap<String, GCLayer> mLayers;
+	private LinkedHashMap<String, GCLayer> mLayers;
 	private Camera mCamera;
 	private SpriteBatch batch;
 	
 	public GCBaseScreen() {
-		this.mLayers = new HashMap<String, GCLayer>();
+		this.mLayers = new LinkedHashMap<String, GCLayer>();
 		this.batch = new SpriteBatch();
 		this.mCamera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 		Gdx.input.setInputProcessor(new GestureDetector(new GCGestureListener()));
 	}
 
-	public HashMap<String, GCLayer> getLayers() {
+	public LinkedHashMap<String, GCLayer> getLayers() {
 		return mLayers;
 	}
 
-	public void setLayers(HashMap<String, GCLayer> layers) {
+	public void setLayers(LinkedHashMap<String, GCLayer> layers) {
 		this.mLayers = layers;
 	}
 	
