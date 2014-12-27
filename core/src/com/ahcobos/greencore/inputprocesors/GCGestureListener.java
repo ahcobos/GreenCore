@@ -17,6 +17,10 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 	public GCGestureListener(GCBaseScreen tScreen) {
 		this.tScreen = tScreen;
 	}
+	
+	// ===========================================================
+	// Methods for/from SuperClass/Interfaces
+	// ===========================================================
 
 	@Override
 	public boolean touchDown(float x, float y, int pointer, int button) {
@@ -140,12 +144,37 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 		return pan;
 	}
 	
-	public void preProcessPanStop(float x, float y, int pointer, int button){}
+	@Override
+	public GCPanStopProperties preProcessPanStop(float x, float y, int pointer, int button) {
+		GCPanStopProperties panStop = new GCPanStopProperties();
+		panStop.setX(this.translateX(x));
+		panStop.setY(this.translateY(y));
+		panStop.setPointer(pointer);
+		panStop.setButton(button);
+		
+		return panStop;
+	}
 	
-	public void preProcessZoom(float initialDistance, float distance){}
+	@Override
+	public GCZoomProperties preProcessZoom(float initialDistante, float distance) {
+		GCZoomProperties zoom = new GCZoomProperties();
+		zoom.setInitialDistante(initialDistante);
+		zoom.setDistance(distance);
+		
+		return zoom;
+	}
 	
-	public void preProcessPinch(Vector2 initialPointer1, Vector2 initialPointer2,
-			Vector2 pointer1, Vector2 pointer2) {}
+	@Override
+	public GCPinchProperties preProcessPinch(Vector2 initialPointer1, Vector2 initialPointer2,
+			Vector2 pointer1, Vector2 pointer2) {
+		GCPinchProperties pinch  = new GCPinchProperties();
+		pinch.setInitialPointer1(initialPointer1);
+		pinch.setInitialPointer2(initialPointer2);
+		pinch.setPointer1(pointer1);
+		pinch.setPointer2(pointer2);
+		
+		return pinch;
+	}
 
 	@Override
 	public void processTouchDown(GCTouchDownProperties gcTouchDown){}
@@ -162,11 +191,20 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 	@Override
 	public void processPan(GCPanProperties gcPan){}
 	
-	public void processPanStop(float x, float y, int pointer, int button){}
+	@Override
+	public void processPanStop(GCPanStopProperties gcPanStop){}
 	
-	public void processPinch(Vector2 initialPointer1, Vector2 initialPointer2,
-			Vector2 pointer1, Vector2 pointer2) {} 
+	@Override
+	public void processZoom(GCZoomProperties gcZoom){}
 	
+	@Override
+	public void processPinch(GCPinchProperties gcPinch) {} 
+	
+	
+	// ===========================================================
+	// Methods
+	// ===========================================================
+
 	public float translateX(float x)
 	{
 		float camposx = this.tScreen.getCamera().position.x;
