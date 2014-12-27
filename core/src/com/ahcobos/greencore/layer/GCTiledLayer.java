@@ -1,9 +1,10 @@
 package com.ahcobos.greencore.layer;
 
-import java.awt.Color;
+
 import java.util.HashMap;
 
 import com.ahcobos.greencore.gcmodel.GCTile;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.math.Vector2;
 
@@ -20,12 +21,14 @@ public class GCTiledLayer extends GCBaseLayer{
 
 	
 	public void constructTiledLayer(Pixmap baseLayerImage){
+		
 		for(int y = 0; y<baseLayerImage.getHeight(); y++){
-			for(int x = 0; x<baseLayerImage.getWidth(); x++){				
-				if(getTile(new Color(baseLayerImage.getPixel(x, baseLayerImage.getHeight()-y-1)).toString()) != null){
-					GCTile tile = getTile(new Color(baseLayerImage.getPixel(x, baseLayerImage.getHeight()-y-1)).toString()).clone();
+			for(int x = 0; x<baseLayerImage.getWidth(); x++){
+				Color c = new Color(baseLayerImage.getPixel(x, baseLayerImage.getHeight()-y-1));
+				if(tilesMap.containsKey(c.toString().substring(0, 6))){
+					GCTile tile = getTile(c.toString().substring(0, 6)).clone();
 					tile.setPosition(new Vector2(x*this.getTileSize(), y*this.getTileSize()));
-					addElement(tile.getPosition().toString(), tile);					
+					addElement(tile.getPosition().toString(), tile);
 				}
 				
 			}
@@ -35,7 +38,7 @@ public class GCTiledLayer extends GCBaseLayer{
 	public void addTile(GCTile tile){
 		if(tile != null)
 			tilesMap.put(tile.getTileName(), tile);	
-			else
+		else
 			System.err.println("Error! GCTile is null and cannot be put in tilesMap");
 	}
 	
