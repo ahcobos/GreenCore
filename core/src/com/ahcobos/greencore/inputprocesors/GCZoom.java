@@ -5,13 +5,13 @@ package com.ahcobos.greencore.inputprocesors;
  * @since 2014-12-26 00:20:23
  */
 
-public class GCZoomProperties {
+public class GCZoom {
 	
 	private float initialDistante, distance;
 	
-	public GCZoomProperties() {}
+	public GCZoom() {}
 
-	public GCZoomProperties(float initialDistance, float distance) {
+	public GCZoom(float initialDistance, float distance) {
 		this.initialDistante = initialDistance;
 		this.distance = distance; 
 	}

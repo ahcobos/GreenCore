@@ -7,14 +7,14 @@ package com.ahcobos.greencore.inputprocesors;
 
 import com.badlogic.gdx.math.Vector2;
 
-public class GCPinchProperties {
+public class GCPinch {
 	
 	private Vector2 initialPointer1, initialPointer2;
 	private Vector2 pointer1,  pointer2;
 	
-	public GCPinchProperties() {}
+	public GCPinch() {}
 	
-	public GCPinchProperties(Vector2 initialPointer1, Vector2 initialPointer2,
+	public GCPinch(Vector2 initialPointer1, Vector2 initialPointer2,
 			Vector2 pointer1, Vector2 pointer2) {
 		this.initialPointer1 = initialPointer1;
 		this.initialPointer2 = initialPointer2;

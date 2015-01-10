@@ -5,15 +5,15 @@ package com.ahcobos.greencore.inputprocesors;
  * @since 2014-12-26 00:20:23
  */
 
-public class GCLongPressProperties {
+public class GCLongPress {
 	
 	private float x , y;
 
-	public GCLongPressProperties() {
+	public GCLongPress() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public GCLongPressProperties(float x , float y) {
+	public GCLongPress(float x , float y) {
 		this.x = x;
 		this.y = y;
 	}

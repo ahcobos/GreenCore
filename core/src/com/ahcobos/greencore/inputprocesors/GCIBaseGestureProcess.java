@@ -13,46 +13,46 @@ public interface GCIBaseGestureProcess {
 	// preProcess functions
 	// ===========================================================
 	
-	public abstract GCTouchDownProperties preProcessTouchDown(float x, 
+	public abstract GCTouchDown preProcessTouchDown(float x, 
 			float y, int pointer, int button);
 	
-	public abstract GCTapProperties preProcessTap(float x, float y,
+	public abstract GCTap preProcessTap(float x, float y,
 			int count, int button);
 	
-	public abstract GCLongPressProperties preProcesslongPress(float x,
+	public abstract GCLongPress preProcesslongPress(float x,
 			float y);
 	
 	public abstract GCFlingProperties preProcessFling(float velocityX, 
 			float velocityY, int button);
 	
-	public abstract GCPanProperties preProcessPan(float x, float y, 
+	public abstract GCPan preProcessPan(float x, float y, 
 			float deltaX, float deltaY);
 	
-	public abstract GCPanStopProperties preProcessPanStop(float x, float y, int pointer,
+	public abstract GCPanStop preProcessPanStop(float x, float y, int pointer,
 			int button);
 	
-	public abstract GCZoomProperties preProcessZoom(float initialDistante, float distance);
+	public abstract GCZoom preProcessZoom(float initialDistante, float distance);
 	
-	public abstract GCPinchProperties preProcessPinch(Vector2 initialPointer1,
+	public abstract GCPinch preProcessPinch(Vector2 initialPointer1,
 			Vector2 initialPointer2, Vector2 pointer1, Vector2 pointer2);
 	
 	// ===========================================================
 	// process functions
 	// ===========================================================
 	
-	public abstract void processTouchDown(GCTouchDownProperties gcTouchDown);
+	public abstract void processTouchDown(GCTouchDown gcTouchDown);
 	
-	public abstract void processTap(GCTapProperties gcTap);
+	public abstract void processTap(GCTap gcTap);
 
-	public abstract void processlongPress(GCLongPressProperties gcLongPress);
+	public abstract void processlongPress(GCLongPress gcLongPress);
 
 	public abstract void processFling(GCFlingProperties gcFling);
 
-	public abstract void processPan(GCPanProperties gcPan);
+	public abstract void processPan(GCPan gcPan);
 
-	public abstract void processPanStop(GCPanStopProperties gcPanStop);
+	public abstract void processPanStop(GCPanStop gcPanStop);
 
-	public abstract void processZoom(GCZoomProperties gcZoom);
+	public abstract void processZoom(GCZoom gcZoom);
 
-	public abstract void processPinch(GCPinchProperties gcPinch);
+	public abstract void processPinch(GCPinch gcPinch);
 }

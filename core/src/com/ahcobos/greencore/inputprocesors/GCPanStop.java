@@ -5,14 +5,14 @@ package com.ahcobos.greencore.inputprocesors;
  * @since 2014-12-26 00:20:23
  */
 
-public class GCPanStopProperties {
+public class GCPanStop {
 	
 	private float x , y;
 	private int pointer, button;
 	
-	public GCPanStopProperties() {}
+	public GCPanStop() {}
 	
-	public GCPanStopProperties(float x, float y, int pointer, int button) {
+	public GCPanStop(float x, float y, int pointer, int button) {
 		this.x = x;
 		this.y = y;
 		this.pointer = pointer;

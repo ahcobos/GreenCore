@@ -5,14 +5,14 @@ package com.ahcobos.greencore.inputprocesors;
  * @since 2014-12-26 00:20:23
  */
 
-public class GCTapProperties {
+public class GCTap {
 	
 	private float x ,y;
 	private int count, button;
 
-	public GCTapProperties() {}
+	public GCTap() {}
 	
-	public GCTapProperties(float x, float y , int count , int button){
+	public GCTap(float x, float y , int count , int button){
 		this.x = x;
 		this.y = y;
 		this.count = count;

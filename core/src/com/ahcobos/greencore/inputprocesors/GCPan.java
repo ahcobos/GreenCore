@@ -5,13 +5,13 @@ package com.ahcobos.greencore.inputprocesors;
  * @since 2014-12-26 00:20:23
  */
 
-public class GCPanProperties {
+public class GCPan {
 	
 	private float x , y , deltaX, deltaY;
 	
-	public GCPanProperties() {}
+	public GCPan() {}
 	
-	public GCPanProperties(float x, float y, float deltaX, float deltaY) {
+	public GCPan(float x, float y, float deltaX, float deltaY) {
 		this.x = x;
 		this.y = y;
 		this.deltaX = deltaX;

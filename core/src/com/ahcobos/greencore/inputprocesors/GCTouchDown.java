@@ -5,13 +5,13 @@ package com.ahcobos.greencore.inputprocesors;
  * @since 2014-12-26 00:20:23
  */
 
-public class GCTouchDownProperties {
+public class GCTouchDown {
 	private float x, y;
 	private int pointer , button;
 
-	public GCTouchDownProperties(){}
+	public GCTouchDown(){}
 	
-	public GCTouchDownProperties(float x , float y, int pointer ,int button)
+	public GCTouchDown(float x , float y, int pointer ,int button)
 	{
 		this.x = x;
 		this.y = y;
