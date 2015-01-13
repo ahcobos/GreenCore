@@ -1,6 +1,7 @@
 package com.ahcobos.greencore.inputprocesors;
 
 import com.ahcobos.greencore.layer.GCBaseScreen;
+import com.ahcobos.greencore.layer.GCLayer;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
@@ -18,6 +19,15 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 		this.tScreen = tScreen;
 	}
 	
+	public GCBaseScreen getTScreen() {
+		return tScreen;
+	}
+
+	public void setTScreen(GCBaseScreen tScreen) {
+		this.tScreen = tScreen;
+	}
+
+	
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
@@ -26,7 +36,7 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 	public boolean touchDown(float x, float y, int pointer, int button) {
 		System.out.println("touchDown");
 		System.out.println("x: "+x+" y: "+y+" pointer: " +pointer + " button: "+ button);
-		GCTouchDownProperties touchDown = this.preProcessTouchDown(x, y, pointer, button);
+		GCTouchDown touchDown = this.preProcessTouchDown(x, y, pointer, button);
 		this.processTouchDown(touchDown);
 		
 		return false;
@@ -36,7 +46,7 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 	public boolean tap(float x, float y, int count, int button) {
 		System.out.println("tap");
 		System.out.println("x: "+x+" y: "+y+" count: " +count + " button: "+ button);		
-		GCTapProperties tap = this.preProcessTap(x, y, count, button);
+		GCTap tap = this.preProcessTap(x, y, count, button);
 		this.processTap(tap);
 		
 		return false;
@@ -46,8 +56,9 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 	public boolean longPress(float x, float y) {
 		System.out.println("longPress");
 		System.out.println("x: "+x+"y: "+y);
-		GCLongPressProperties longPress =  this.preProcesslongPress(x, y);
+		GCLongPress longPress =  this.preProcesslongPress(x, y);
 		this.processlongPress(longPress);
+		
 		return false;
 	}
 
@@ -55,7 +66,7 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 	public boolean fling(float velocityX, float velocityY, int button) {
 		System.out.println("fling");
 		System.out.println("VelocityX: "+velocityX+ " VelocityY: "+velocityY + " button: "+ button);
-		GCFlingProperties fling = this.preProcessFling(velocityX, velocityY, button);
+		GCFling fling = this.preProcessFling(velocityX, velocityY, button);
 		this.processFling(fling);
 		return false;
 	}
@@ -64,8 +75,9 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 	public boolean pan(float x, float y, float deltaX, float deltaY) {
 		System.out.println("pan");
 		System.out.println("x: "+x+" y: "+y+" deltaX: " +deltaX+ " deltaY: "+ deltaY);
-		GCPanProperties pan = this.preProcessPan(x, y, deltaX, deltaY);
+		GCPan pan = this.preProcessPan(x, y, deltaX, deltaY);
 		this.processPan(pan);
+		
 		return false;
 	}
 
@@ -73,6 +85,9 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 	public boolean panStop(float x, float y, int pointer, int button) {
 		System.out.println("panstop");
 		System.out.println("x: "+x+" y: "+y+" pointer: " +pointer + " button: "+ button);
+		GCPanStop panStop = this.preProcessPanStop(x, y, pointer, button);
+		this.processPanStop(panStop);
+		
 		return false;
 	}
 
@@ -80,6 +95,9 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 	public boolean zoom(float initialDistance, float distance) {
 		System.out.println("Zoom");
 		System.out.println("initialDistante: "+ initialDistance + " distance: "+distance );
+		GCZoom zoom = this.preProcessZoom(initialDistance, distance);
+		this.processZoom(zoom);
+		
 		return false;
 	}
 
@@ -95,12 +113,15 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 				+ pointer1.y);
 		System.out.println("Pointer2 x:"+pointer2.x + "pointer2 y:"
 				+ pointer2.y);
+		GCPinch pinch = this.preProcessPinch(initialPointer1, initialPointer2, pointer1, pointer2);
+		this.processPinch(pinch);
+
 		return false;
 	}
 	
 	@Override
-	public GCTouchDownProperties preProcessTouchDown(float x, float y, int pointer, int button) {
-		GCTouchDownProperties mProperties = new GCTouchDownProperties();
+	public GCTouchDown preProcessTouchDown(float x, float y, int pointer, int button) {
+		GCTouchDown mProperties = new GCTouchDown();
 		mProperties.setX(this.translateX(x));
 		mProperties.setY(this.translateY(y));
 		mProperties.setPointer(pointer);
@@ -109,8 +130,8 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 	}
 	
 	@Override
-	public GCTapProperties preProcessTap(float x, float y, int count, int button) {
-		GCTapProperties mProperties = new GCTapProperties();
+	public GCTap preProcessTap(float x, float y, int count, int button) {
+		GCTap mProperties = new GCTap();
 		mProperties.setX(this.translateX(x));
 		mProperties.setY(this.translateY(y));
 		mProperties.setCount(count);
@@ -120,8 +141,8 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 	}
 	
 	@Override
-	public GCLongPressProperties preProcesslongPress(float x, float y) {
-		GCLongPressProperties longPress = new GCLongPressProperties();
+	public GCLongPress preProcesslongPress(float x, float y) {
+		GCLongPress longPress = new GCLongPress();
 		longPress.setX(this.translateX(x));
 		longPress.setY(this.translateY(y));
 		
@@ -129,13 +150,13 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 	}
 	
 	@Override
-	public GCFlingProperties preProcessFling(float velocityX, float velocityY, int button){
-		return new GCFlingProperties(velocityX, velocityY, button );
+	public GCFling preProcessFling(float velocityX, float velocityY, int button){
+		return new GCFling(velocityX, velocityY, button );
 	}
 	
 	@Override
-	public GCPanProperties preProcessPan(float x, float y, float deltaX, float deltaY) {
-		GCPanProperties pan = new GCPanProperties();
+	public GCPan preProcessPan(float x, float y, float deltaX, float deltaY) {
+		GCPan pan = new GCPan();
 		pan.setX(this.translateX(x));
 		pan.setY(this.translateY(y));
 		pan.setDeltaX(deltaX);
@@ -145,8 +166,8 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 	}
 	
 	@Override
-	public GCPanStopProperties preProcessPanStop(float x, float y, int pointer, int button) {
-		GCPanStopProperties panStop = new GCPanStopProperties();
+	public GCPanStop preProcessPanStop(float x, float y, int pointer, int button) {
+		GCPanStop panStop = new GCPanStop();
 		panStop.setX(this.translateX(x));
 		panStop.setY(this.translateY(y));
 		panStop.setPointer(pointer);
@@ -156,8 +177,8 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 	}
 	
 	@Override
-	public GCZoomProperties preProcessZoom(float initialDistante, float distance) {
-		GCZoomProperties zoom = new GCZoomProperties();
+	public GCZoom preProcessZoom(float initialDistante, float distance) {
+		GCZoom zoom = new GCZoom();
 		zoom.setInitialDistante(initialDistante);
 		zoom.setDistance(distance);
 		
@@ -165,9 +186,9 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 	}
 	
 	@Override
-	public GCPinchProperties preProcessPinch(Vector2 initialPointer1, Vector2 initialPointer2,
+	public GCPinch preProcessPinch(Vector2 initialPointer1, Vector2 initialPointer2,
 			Vector2 pointer1, Vector2 pointer2) {
-		GCPinchProperties pinch  = new GCPinchProperties();
+		GCPinch pinch  = new GCPinch();
 		pinch.setInitialPointer1(initialPointer1);
 		pinch.setInitialPointer2(initialPointer2);
 		pinch.setPointer1(pointer1);
@@ -177,28 +198,116 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 	}
 
 	@Override
-	public void processTouchDown(GCTouchDownProperties gcTouchDown){}
+	public void processTouchDown(GCTouchDown gcTouchDown){
+		if(this.getTScreen() instanceof GCBaseGestureListener){
+			((GCBaseGestureListener) this.getTScreen()).onTouchDown(gcTouchDown); 
+		}
+		
+		for (String key : this.getTScreen().getLayers().keySet()) {
+			GCLayer mLayer = this.getTScreen().getLayers().get(key);
+			if(mLayer instanceof GCBaseGestureListener){
+				((GCBaseGestureListener) mLayer).onTouchDown(gcTouchDown); 
+			}
+		}
+	}
 	
 	@Override
-	public void processTap(GCTapProperties gcTap){}
+	public void processTap(GCTap gcTap){		
+		if(this.getTScreen() instanceof GCBaseGestureListener){
+			((GCBaseGestureListener) this.getTScreen()).onTap(gcTap); 
+		}
+		
+		for (String key : this.getTScreen().getLayers().keySet()) {
+			GCLayer mLayer = this.getTScreen().getLayers().get(key);
+			if(mLayer instanceof GCBaseGestureListener){
+				((GCBaseGestureListener) mLayer).onTap(gcTap); 
+			}
+		}
+	}
 	
 	@Override
-	public void processlongPress(GCLongPressProperties gcLongPress) {}
+	public void processlongPress(GCLongPress gcLongPress) {
+		if(this.getTScreen() instanceof GCBaseGestureListener){
+			((GCBaseGestureListener) this.getTScreen()).onLongPress(gcLongPress); 
+		}
+		
+		for (String key : this.getTScreen().getLayers().keySet()) {
+			GCLayer mLayer = this.getTScreen().getLayers().get(key);
+			if(mLayer instanceof GCBaseGestureListener){
+				((GCBaseGestureListener) mLayer).onLongPress(gcLongPress); 
+			}
+		}
+	}
 	
 	@Override
-	public void processFling(GCFlingProperties gcFling){}
+	public void processFling(GCFling gcFling) {
+		if(this.getTScreen() instanceof GCBaseGestureListener){
+			((GCBaseGestureListener) this.getTScreen()).onFling(gcFling); 
+		}
+		
+		for (String key : this.getTScreen().getLayers().keySet()) {
+			GCLayer mLayer = this.getTScreen().getLayers().get(key);
+			if(mLayer instanceof GCBaseGestureListener){
+				((GCBaseGestureListener) mLayer).onFling(gcFling); 
+			}
+		}
+	}
 	
 	@Override
-	public void processPan(GCPanProperties gcPan){}
+	public void processPan(GCPan gcPan) {
+		if(this.getTScreen() instanceof GCBaseGestureListener){
+			((GCBaseGestureListener) this.getTScreen()).onPan(gcPan); 
+		}
+		
+		for (String key : this.getTScreen().getLayers().keySet()) {
+			GCLayer mLayer = this.getTScreen().getLayers().get(key);
+			if(mLayer instanceof GCBaseGestureListener){
+				((GCBaseGestureListener) mLayer).onPan(gcPan); 
+			}
+		}
+	}
 	
 	@Override
-	public void processPanStop(GCPanStopProperties gcPanStop){}
+	public void processPanStop(GCPanStop gcPanStop) {
+		if(this.getTScreen() instanceof GCBaseGestureListener){
+			((GCBaseGestureListener) this.getTScreen()).onPanStop(gcPanStop); 
+		}
+		
+		for (String key : this.getTScreen().getLayers().keySet()) {
+			GCLayer mLayer = this.getTScreen().getLayers().get(key);
+			if(mLayer instanceof GCBaseGestureListener){
+				((GCBaseGestureListener) mLayer).onPanStop(gcPanStop); 
+			}
+		}
+	}
 	
 	@Override
-	public void processZoom(GCZoomProperties gcZoom){}
+	public void processZoom(GCZoom gcZoom) {
+		if(this.getTScreen() instanceof GCBaseGestureListener){
+			((GCBaseGestureListener) this.getTScreen()).onZoom(gcZoom); 
+		}
+		
+		for (String key : this.getTScreen().getLayers().keySet()) {
+			GCLayer mLayer = this.getTScreen().getLayers().get(key);
+			if(mLayer instanceof GCBaseGestureListener){
+				((GCBaseGestureListener) mLayer).onZoom(gcZoom); 
+			}
+		}
+	}
 	
 	@Override
-	public void processPinch(GCPinchProperties gcPinch) {} 
+	public void processPinch(GCPinch gcPinch) {
+		if(this.getTScreen() instanceof GCBaseGestureListener){
+			((GCBaseGestureListener) this.getTScreen()).onPinch(gcPinch); 
+		}
+		
+		for (String key : this.getTScreen().getLayers().keySet()) {
+			GCLayer mLayer = this.getTScreen().getLayers().get(key);
+			if(mLayer instanceof GCBaseGestureListener){
+				((GCBaseGestureListener) mLayer).onPinch(gcPinch);
+			}
+		}
+	} 
 	
 	
 	// ===========================================================

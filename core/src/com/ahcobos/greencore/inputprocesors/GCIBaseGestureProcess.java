@@ -22,7 +22,7 @@ public interface GCIBaseGestureProcess {
 	public abstract GCLongPress preProcesslongPress(float x,
 			float y);
 	
-	public abstract GCFlingProperties preProcessFling(float velocityX, 
+	public abstract GCFling preProcessFling(float velocityX, 
 			float velocityY, int button);
 	
 	public abstract GCPan preProcessPan(float x, float y, 
@@ -46,7 +46,7 @@ public interface GCIBaseGestureProcess {
 
 	public abstract void processlongPress(GCLongPress gcLongPress);
 
-	public abstract void processFling(GCFlingProperties gcFling);
+	public abstract void processFling(GCFling gcFling);
 
 	public abstract void processPan(GCPan gcPan);
 
