@@ -1,8 +1,9 @@
 package com.ahcobos.greencore.gcmodel;
 
-import java.awt.Color;
 
 import com.ahcobos.greencore.gcstate.GCStaticState;
+import com.ahcobos.greencore.utils.GCColorManager;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 
 public class GCTile extends GCBaseModel implements Cloneable{
@@ -11,25 +12,68 @@ public class GCTile extends GCBaseModel implements Cloneable{
 	protected Texture tileImage;
 	protected boolean isObstacle;
 	protected GCStaticState staticState;		
+	protected GCColorManager colorManager;
 	
 	public GCTile(Color assignedColor, Texture tileImage){
 		this.assignedColor = assignedColor;
 		this.tileImage = tileImage;
 		this.isObstacle	 = false;
-		this.tileName = assignedColor.toString();
+		this.tileName = assignedColor.toString().substring(0,6);
 		this.staticState = new GCStaticState(tileImage);		
-		this.addState(staticState, tileName);		
+		this.addState(staticState, tileName);
+		this.setCurrentState(tileName);
 	}
-		
+	
 	public GCTile(Color assignedColor, Texture tileImage, boolean isObstacle){
 		this.assignedColor = assignedColor;
 		this.tileImage = tileImage;
 		this.isObstacle = isObstacle;
-		this.tileName = assignedColor.toString();		
+		this.tileName = assignedColor.toString().substring(0,6);
 		this.staticState = new GCStaticState(tileImage);		
 		this.addState(staticState, tileName);
+		this.setCurrentState(tileName);
 	}
-		
+	
+	public GCTile(String hexColor, Texture tileImage){
+		this.assignedColor = Color.valueOf(hexColor);
+		this.tileImage = tileImage;
+		this.isObstacle	 = false;
+		this.tileName = assignedColor.toString().substring(0,6);
+		this.staticState = new GCStaticState(tileImage);		
+		this.addState(staticState, tileName);
+		this.setCurrentState(tileName);
+	}
+	
+	public GCTile(String hexColor, Texture tileImage, boolean isObstacle){
+		this.assignedColor = Color.valueOf(hexColor);
+		this.tileImage = tileImage;
+		this.isObstacle	 = isObstacle;
+		this.tileName = assignedColor.toString().substring(0,6);
+		this.staticState = new GCStaticState(tileImage);		
+		this.addState(staticState, tileName);
+		this.setCurrentState(tileName);		
+	}
+	
+	public GCTile(int r, int g, int b, Texture tileImage, boolean isObstacle){
+		this.assignedColor = Color.valueOf(GCColorManager.getHexColorNotation(r, g, b));
+		this.tileImage = tileImage;
+		this.isObstacle	 = false;
+		this.tileName = assignedColor.toString().substring(0,6);
+		this.staticState = new GCStaticState(tileImage);		
+		this.addState(staticState, tileName);
+		this.setCurrentState(tileName);
+		}
+	
+	public GCTile(int r, int g, int b, Texture tileImage){
+		this.assignedColor = Color.valueOf(GCColorManager.getHexColorNotation(r, g, b));
+		this.tileImage = tileImage;
+		this.isObstacle	 = false;
+		this.tileName = assignedColor.toString().substring(0,6);
+		this.staticState = new GCStaticState(tileImage);		
+		this.addState(staticState, tileName);
+		this.setCurrentState(tileName);
+	}
+	
 	public void setTileName(String name){
 		this.tileName = name;
 	}

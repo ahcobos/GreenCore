@@ -113,7 +113,8 @@ public class GCBaseState extends GCState {
 		this.sprite = this.getGraphicsSourceManager().buildSprite();
 		return this.sprite;
 	}
-
+	
+	
 	@Override
 	public GCGraphicsSourceManager getGraphicsSourceManager() {
 		if(this.mGraphicsSourceManager != null)

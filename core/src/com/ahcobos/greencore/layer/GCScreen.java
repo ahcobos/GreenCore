@@ -1,9 +1,8 @@
 package com.ahcobos.greencore.layer;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -13,8 +12,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  */
 public abstract class GCScreen  implements Screen{
 
-	public abstract HashMap<String, GCLayer> getLayers();	
-	public abstract void setLayers(HashMap<String, GCLayer> layers);	
+	public abstract LinkedHashMap<String, GCLayer> getLayers();	
+	public abstract void setLayers(LinkedHashMap<String, GCLayer> layers);	
 	public abstract void addLayer(GCLayer mLayer);
 	public abstract void removeLayer(String key);
 	public abstract void removeLayer(GCLayer mLayer);

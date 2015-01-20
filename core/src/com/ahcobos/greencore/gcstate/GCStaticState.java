@@ -37,5 +37,9 @@ public class GCStaticState extends GCBaseState{
 		public GCStaticState(Sprite sprite){
 			this.sprite = sprite;
 		}
+		
+		public Sprite getSprite(){
+			return this.sprite;
+		}
 	}
 

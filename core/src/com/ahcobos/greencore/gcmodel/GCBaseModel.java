@@ -3,8 +3,8 @@ package com.ahcobos.greencore.gcmodel;
 import java.util.HashMap;
 
 import com.ahcobos.greencore.gcstate.GCState;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -49,10 +49,6 @@ public class GCBaseModel extends GCModel {
 		this.currentState = this.getStates().get(key);
 	}
 
-	@Override
-	public void setCurrentState(GCState state) {
-		// I do not know if it is necessary 
-	}
 
 	@Override
 	public GCState getCurrentState() {
@@ -95,7 +91,7 @@ public class GCBaseModel extends GCModel {
 	}
 
 	@Override
-	public void draw(SpriteBatch batch) {
+	public void draw(Batch batch) {
 		Sprite toDraw = this.getCurrentState().getSprite();
 		toDraw.setPosition(getX(), getY());
 //		toDraw.setRotation(this.getRotation());
@@ -112,5 +108,6 @@ public class GCBaseModel extends GCModel {
 	public Vector2 getPosition() {
 		return this.position;
 	}
+
 
 }

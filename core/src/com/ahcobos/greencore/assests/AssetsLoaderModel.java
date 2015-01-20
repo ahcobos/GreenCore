@@ -5,9 +5,9 @@ import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 /**
@@ -20,23 +20,24 @@ public class AssetsLoaderModel{
 	// Fields
 	// ===========================================================
 
-	private static HashMap<String,Texture> textures ;
-	private static HashMap<String,Sound> sounds ;
-	private static HashMap<String,Music> music ;
-	private static HashMap<String,BitmapFont> fonts ;
-	private static HashMap<String,TextureAtlas> packs ;
+	private static HashMap<String,Texture> textures;
+	private static HashMap<String,Sound> sounds;
+	private static HashMap<String,Music> music;
+	private static HashMap<String,BitmapFont> fonts;
+	private static HashMap<String,TextureAtlas> packs;
+	private static HashMap<String, Pixmap> pixmaps;
 	public static BitmapFont font;
 	
 	// ===========================================================
 	// Constructors
 	// ===========================================================
 
-	public AssetsLoaderModel(){
-		
+	public AssetsLoaderModel(){		
 		this.textures = new HashMap<String, Texture>();
 		this.sounds = new HashMap<String, Sound>();
 		this.music = new HashMap<String, Music>();
 		this.fonts = new HashMap<String, BitmapFont>();
+		this.pixmaps = new HashMap<String, Pixmap>();
 		this.packs = new HashMap<String, TextureAtlas>();
 	}
 	
@@ -63,9 +64,18 @@ public class AssetsLoaderModel{
 	public static HashMap<String,Sound> getSounds() {
 		return sounds;
 	}
+	
 
 	public static void setSounds(HashMap<String,Sound> sounds) {
 		AssetsLoaderModel.sounds = sounds;
+	}
+	
+	public static HashMap<String, Pixmap> getPixmaps(){
+		return pixmaps;
+	}
+	
+	public static void setPixmaps(HashMap<String, Pixmap> pixmaps){
+		AssetsLoaderModel.pixmaps = pixmaps;
 	}
 	
 	// ===========================================================
@@ -101,6 +111,33 @@ public class AssetsLoaderModel{
 		}
 		return false;
 	} 
+	
+	public static void addPixmap(String PixmapLocation){
+		Pixmap pixmap = new Pixmap(Gdx.files.internal(PixmapLocation));
+		String key = PixmapLocation.substring(PixmapLocation.lastIndexOf('/')+1, PixmapLocation.lastIndexOf('.'));
+		pixmaps.put(key, pixmap);
+	}
+	
+	public static void addPixmap(String PixmapLocation, String key){
+		Pixmap pixmap = new Pixmap(Gdx.files.internal(PixmapLocation));
+		if(pixmaps.containsKey(key))
+			System.err.println("Error. Key of pixmap already exists");
+		else
+			pixmaps.put(key, pixmap);
+	}
+	
+	public static Pixmap getPixmap(String key){
+		return pixmaps.get(key);
+	}
+	
+	public static boolean removePixmap(String key){
+		Pixmap pixmap = pixmaps.get(key);
+		if(pixmap != null){
+			pixmap.dispose();
+			return true;
+		}
+		return false;
+	}
 	
 	public static void addSound(String SoundLocation)
 	{
@@ -152,4 +189,5 @@ public class AssetsLoaderModel{
 		}
 		return false;
 	}
+	
 }

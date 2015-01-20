@@ -1,10 +1,12 @@
 package com.ahcobos.greencore.layer;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import com.ahcobos.greencore.inputprocesors.GCGestureListener;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.input.GestureDetector;
@@ -14,22 +16,23 @@ import com.badlogic.gdx.input.GestureDetector;
  * @since 2014-10-29 13:02:35
  */
 public class GCBaseScreen extends GCScreen {
-	private HashMap<String, GCLayer> mLayers;
+	private LinkedHashMap<String, GCLayer> mLayers;
 	private Camera mCamera;
 	private SpriteBatch batch;
+	private Game mGame;
 	
-	public GCBaseScreen() {
-		this.mLayers = new HashMap<String, GCLayer>();
+	public GCBaseScreen(Game mGame) {
+		this.mLayers = new LinkedHashMap<String, GCLayer>();
 		this.batch = new SpriteBatch();
 		this.mCamera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-		Gdx.input.setInputProcessor(new GestureDetector(new GCGestureListener()));
+		this.mGame = mGame;
 	}
 
-	public HashMap<String, GCLayer> getLayers() {
+	public LinkedHashMap<String, GCLayer> getLayers() {
 		return mLayers;
 	}
 
-	public void setLayers(HashMap<String, GCLayer> layers) {
+	public void setLayers(LinkedHashMap<String, GCLayer> layers) {
 		this.mLayers = layers;
 	}
 	
@@ -59,9 +62,12 @@ public class GCBaseScreen extends GCScreen {
 	}
 
 	@Override
-	public void render(float delta) {
-		this.batch.begin();
+	public void render(float delta) { 
+		this.getCamera().update();
 		this.batch.setProjectionMatrix(this.mCamera.combined);
+		this.batch.begin();
+		Gdx.gl.glClearColor(1f, 1f, 1f, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		for (String key : this.mLayers.keySet()) {
 			this.mLayers.get(key).getRenderer().render(this.batch, delta);
 		}
@@ -110,5 +116,14 @@ public class GCBaseScreen extends GCScreen {
 	@Override
 	public void setBatch(SpriteBatch mBatch) {
 		this.batch = mBatch;
+	}
+	
+
+	public Game getmGame() {
+		return mGame;
+	}
+
+	public void setmGame(Game mGame) {
+		this.mGame = mGame;
 	}
 }
