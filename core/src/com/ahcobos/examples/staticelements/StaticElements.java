@@ -21,8 +21,8 @@ public class StaticElements extends Game {
 		TextureAtlas atlas;
 		AssetsLoaderModel.addTexture("badlogic.jpg", "base_image");
 		AssetsLoaderModel.addPack("and_engine.pack", "and_engine");
-		this.mScreen = new FirstScreen();
-		Gdx.input.setInputProcessor(new GestureDetector(new GCGestureListener()));
+		this.mScreen = new FirstScreen(this);
+		Gdx.input.setInputProcessor(new GestureDetector(new GCGestureListener(this.mScreen)));
 		this.setScreen(mScreen);
 	}
 
