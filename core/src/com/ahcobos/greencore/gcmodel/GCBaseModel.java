@@ -5,6 +5,7 @@ import java.util.HashMap;
 import com.ahcobos.greencore.gcstate.GCState;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -107,6 +108,11 @@ public class GCBaseModel extends GCModel {
 	@Override
 	public Vector2 getPosition() {
 		return this.position;
+	}
+
+	@Override
+	public Rectangle getBoundingRectangle() {
+		return this.getSprite().getBoundingRectangle();
 	}
 
 
