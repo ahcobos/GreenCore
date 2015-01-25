@@ -74,6 +74,6 @@ public class Face extends GCBaseModel implements GCBaseGestureListener{
 	public void onPinch(GCPinch pinch) {
 		// TODO Auto-generated method stub
 		
->>>>>>> Stashed changes
+
 	}
 }
