@@ -1,5 +1,6 @@
 package com.ahcobos.greencore.inputprocesors;
 
+import com.ahcobos.greencore.gcmodel.GCModel;
 import com.ahcobos.greencore.layer.GCBaseScreen;
 import com.ahcobos.greencore.layer.GCLayer;
 import com.badlogic.gdx.Gdx;
@@ -34,8 +35,6 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 
 	@Override
 	public boolean touchDown(float x, float y, int pointer, int button) {
-		System.out.println("touchDown");
-		System.out.println("x: "+x+" y: "+y+" pointer: " +pointer + " button: "+ button);
 		GCTouchDown touchDown = this.preProcessTouchDown(x, y, pointer, button);
 		this.processTouchDown(touchDown);
 		
@@ -209,6 +208,17 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 				((GCBaseGestureListener) mLayer).onTouchDown(gcTouchDown); 
 			}
 		}
+		
+		for (String key : this.getTScreen().getLayers().keySet()) {
+			GCLayer mLayer = this.getTScreen().getLayers().get(key);
+			for (String eKey : mLayer.getElements().keySet()) {
+				GCModel mElement = mLayer.getElements().get(eKey);
+				if(mElement instanceof GCBaseGestureListener && 
+						mElement.getBoundingRectangle().contains(gcTouchDown.getTouchVector())){
+					((GCBaseGestureListener) mElement).onTouchDown(gcTouchDown); 
+				}
+			}
+		}
 	}
 	
 	@Override
@@ -223,6 +233,17 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 				((GCBaseGestureListener) mLayer).onTap(gcTap); 
 			}
 		}
+		
+		for (String key : this.getTScreen().getLayers().keySet()) {
+			GCLayer mLayer = this.getTScreen().getLayers().get(key);
+			for (String eKey : mLayer.getElements().keySet()) {
+				GCModel mElement = mLayer.getElements().get(eKey);
+				if(mElement instanceof GCBaseGestureListener && 
+						mElement.getBoundingRectangle().contains(gcTap.getTouchVector())){
+					((GCBaseGestureListener) mElement).onTap(gcTap); 
+				}
+			}
+		}
 	}
 	
 	@Override
@@ -235,6 +256,17 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 			GCLayer mLayer = this.getTScreen().getLayers().get(key);
 			if(mLayer instanceof GCBaseGestureListener){
 				((GCBaseGestureListener) mLayer).onLongPress(gcLongPress); 
+			}
+		}
+		
+		for (String key : this.getTScreen().getLayers().keySet()) {
+			GCLayer mLayer = this.getTScreen().getLayers().get(key);
+			for (String eKey : mLayer.getElements().keySet()) {
+				GCModel mElement = mLayer.getElements().get(eKey);
+				if(mElement instanceof GCBaseGestureListener && 
+						mElement.getBoundingRectangle().contains(gcLongPress.getTouchVector())){
+					((GCBaseGestureListener) mElement).onLongPress(gcLongPress); 
+				}
 			}
 		}
 	}
@@ -265,6 +297,17 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 				((GCBaseGestureListener) mLayer).onPan(gcPan); 
 			}
 		}
+
+		for (String key : this.getTScreen().getLayers().keySet()) {
+			GCLayer mLayer = this.getTScreen().getLayers().get(key);
+			for (String eKey : mLayer.getElements().keySet()) {
+				GCModel mElement = mLayer.getElements().get(eKey);
+				if(mElement instanceof GCBaseGestureListener && 
+						mElement.getBoundingRectangle().contains(gcPan.getTouchVector())){
+					((GCBaseGestureListener) mElement).onPan(gcPan); 
+				}
+			}
+		}
 	}
 	
 	@Override
@@ -277,6 +320,17 @@ public class GCGestureListener implements GestureListener, GCIBaseGestureProcess
 			GCLayer mLayer = this.getTScreen().getLayers().get(key);
 			if(mLayer instanceof GCBaseGestureListener){
 				((GCBaseGestureListener) mLayer).onPanStop(gcPanStop); 
+			}
+		}
+		
+		for (String key : this.getTScreen().getLayers().keySet()) {
+			GCLayer mLayer = this.getTScreen().getLayers().get(key);
+			for (String eKey : mLayer.getElements().keySet()) {
+				GCModel mElement = mLayer.getElements().get(eKey);
+				if(mElement instanceof GCBaseGestureListener && 
+						mElement.getBoundingRectangle().contains(gcPanStop.getTouchVector())){
+					((GCBaseGestureListener) mElement).onPanStop(gcPanStop); 
+				}
 			}
 		}
 	}

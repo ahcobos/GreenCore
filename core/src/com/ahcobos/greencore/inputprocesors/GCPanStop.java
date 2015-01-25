@@ -1,5 +1,7 @@
 package com.ahcobos.greencore.inputprocesors;
 
+import com.badlogic.gdx.math.Vector2;
+
 /**
  * @author ahcobos
  * @since 2014-12-26 00:20:23
@@ -49,5 +51,9 @@ public class GCPanStop {
 
 	public void setButton(int button) {
 		this.button = button;
+	}
+
+	public Vector2 getTouchVector() {
+		return new Vector2(this.getX(), this.getY());
 	}
 }

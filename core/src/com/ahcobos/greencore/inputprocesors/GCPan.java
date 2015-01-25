@@ -1,5 +1,7 @@
 package com.ahcobos.greencore.inputprocesors;
 
+import com.badlogic.gdx.math.Vector2;
+
 /**
  * @author ahcobos
  * @since 2014-12-26 00:20:23
@@ -48,5 +50,9 @@ public class GCPan {
 
 	public void setDeltaY(float deltaY) {
 		this.deltaY = deltaY;
+	}
+
+	public Vector2 getTouchVector() {
+		return new Vector2(this.getX(), this.getY());
 	}
 }
