@@ -6,14 +6,10 @@ import com.ahcobos.greencore.gcmodel.GCBaseModel;
 import com.ahcobos.greencore.gcmodel.GCModel;
 import com.ahcobos.greencore.gcmodel.GCTile;
 import com.ahcobos.greencore.gcstate.GCBaseState;
-
 import com.ahcobos.greencore.inputprocesors.GCGestureListener;
-
-
 import com.ahcobos.greencore.layer.GCBaseScreen;
 import com.ahcobos.greencore.layer.GCTiledLayer;
 import com.ahcobos.greencore.renderer.GCDefaultScreenRenderer;
-
 import com.ahcobos.greencore.renderer.GCRenderer;
 import com.ahcobos.greencore.utils.GCColorManager;
 import com.badlogic.gdx.Game;
@@ -21,7 +17,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Rectangle;
 
@@ -60,6 +55,7 @@ public class GreenCoreGame extends Game {
 		AssetsLoaderModel.addPixmap("tiledLayers/Layer2.png");
 
 
+
 		this.smileFace.setName("smile");
 		this.smileFace.setTextureHash("basica");
 		this.smileFace.setBoundsOnTexture(new Rectangle(0, 0, 50, 50));
@@ -67,6 +63,7 @@ public class GreenCoreGame extends Game {
 		this.mFace.setCurrentState("sonriendo");
 
 		mainScreen = new GCBaseScreen(this);
+
 		mRenderer = new GCDefaultScreenRenderer(mainScreen);
 		
 		Gdx.input.setInputProcessor(new GestureDetector(new GCGestureListener(mainScreen)));

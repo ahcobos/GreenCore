@@ -12,7 +12,6 @@ public class FaceSmileState extends GCBaseState {
 		this.setGraphicsSourceManager(new GCOpenTexturePackerSource("and_engine", "tank"));
 		//GCTextureSource nSource = new GCTextureSource("base_image");
 		//this.setGraphicsSourceManager(nSource);
-		this.setBoundsOnTexture(new Rectangle(0,0,50,50));
 	}
 
 }
