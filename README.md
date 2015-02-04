@@ -119,9 +119,22 @@ Advanced stuff, explained later ;), for now, this is the component which renders
 Sets the renderer for your layer, you can create your own renderer, explained later ;)
 
 ### GCBaseModel
-This is the place where GreenCore becomes more useful for your game
+This is the place where GreenCore becomes more useful for your game.
 A model is understood as an actor which have states (running, jumping, walking), so lets thing we are building a clasic Jumper Game, in that case 
 the platforms would be a model, each kind of enemy would be a model and of course our Jumper would be another model
+
+### GCBaseState
+States are the key part in your models, A state is a part of your model, for example, our Jumper jumping.
+Basically we have developed two kind of states, StaticState and AnimatedState
+
+#### GCStaticState
+A Static state, as its name says, represents an static state of a model, for example a door, a door would be composed of two static states, openState and closedState.
+none of those states is "Animated", they both are composed of a single image, the open door and the close door
+
+#### GCAnimatedState
+An Animated state represents a part of a model where de model is moving or is animated, as an example, the door would be composed of two animated states,
+door opening (animation of the door openning) and closing door (animation of the closing door)
+
 
 ## Some Features
  * Models
