@@ -17,8 +17,9 @@ public class Face extends GCBaseModel implements GCBaseGestureListener{
 
 	public Face() {
 		this.addState(new FaceSmileState(), "faceSmile");
-		this.setCurrentState("faceSmile");
-		this.setPosition(new Vector2(50,50));
+		this.addState(new JumpingFace(), "jumping");
+		this.setCurrentState("jumping");
+		this.setPosition(new Vector2(-50,-50));
 
 		System.out.println("sprite x" + this.getSprite().getBoundingRectangle().x
 				+ "sprite y" + this.getSprite().getBoundingRectangle().y 
@@ -49,13 +50,11 @@ public class Face extends GCBaseModel implements GCBaseGestureListener{
 	@Override
 	public void onFling(GCFling fling) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void onPan(GCPan pan) {
 		this.setPosition(pan.getTouchVector());
-		
 	}
 
 	@Override

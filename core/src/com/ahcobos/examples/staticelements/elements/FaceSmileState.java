@@ -8,7 +8,6 @@ import com.badlogic.gdx.math.Rectangle;
 public class FaceSmileState extends GCBaseState {
 	
 	public FaceSmileState() {
-		this.setTextureHash("base_image");
 		this.setGraphicsSourceManager(new GCOpenTexturePackerSource("and_engine", "tank"));
 		//GCTextureSource nSource = new GCTextureSource("base_image");
 		//this.setGraphicsSourceManager(nSource);

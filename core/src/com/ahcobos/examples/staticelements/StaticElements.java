@@ -20,10 +20,17 @@ public class StaticElements extends Game {
 		new AssetsLoaderModel();
 		TextureAtlas atlas;
 		AssetsLoaderModel.addTexture("badlogic.jpg", "base_image");
+		AssetsLoaderModel.addTexture("sprite-animation4.gif", "runing_man");
 		AssetsLoaderModel.addPack("and_engine.pack", "and_engine");
 		this.mScreen = new FirstScreen(this);
 		Gdx.input.setInputProcessor(new GestureDetector(new GCGestureListener(this.mScreen)));
 		this.setScreen(mScreen);
+	}
+	
+	@Override
+	public void render () {
+		super.render();
+		System.out.println(Gdx.graphics.getFramesPerSecond());
 	}
 
 }
