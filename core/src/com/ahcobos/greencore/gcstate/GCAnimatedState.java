@@ -10,35 +10,56 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
  */
 public class GCAnimatedState extends GCBaseState {
 	
-	private Animation a;
+	private Animation animation;
+
 	private boolean isLoop;
 	private float stateTime;
-	
-	public GCAnimatedState(Animation a,boolean isLoop)
+
+	public GCAnimatedState(){
+		this.isLoop = true;
+	}
+
+	public GCAnimatedState(Animation a, boolean isLoop)
 	{
-		this.a = a;
+		this.animation = a;
 		this.isLoop =  isLoop;
 	}
-	
+
 	public GCAnimatedState(Animation a)
 	{
-		this.a = a;
+		this.animation = a;
 		this.isLoop =  true;
-	}	
-	
+	}
+
 	public Animation getAnimation()
 	{
-		return a;
+		return animation;
 	}
-	
+
 	public boolean getIsLoop()
 	{
 		return isLoop;		
 	}
-		
+
 	public Sprite getSprite()
 	{
 		stateTime += Gdx.graphics.getDeltaTime();
-		return (Sprite)a.getKeyFrame(stateTime);
+		return new Sprite(animation.getKeyFrame(stateTime, this.getIsLoop()));
+	}
+
+	public void setAnimation(Animation animation) {
+		this.animation = animation;
+	}
+
+	public float getStateTime() {
+		return stateTime;
+	}
+
+	public void setStateTime(float stateTime) {
+		this.stateTime = stateTime;
+	}
+
+	public void setLoop(boolean isLoop) {
+		this.isLoop = isLoop;
 	}
 }
