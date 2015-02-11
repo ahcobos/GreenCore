@@ -136,6 +136,18 @@ An Animated state represents a part of a model where de model is moving or is an
 door opening (animation of the door openning) and closing door (animation of the closing door)
 
 
+### GCGraphicsSource
+In order to add sprites, stylesheets, packs and other graohics GCGraphicsSources to your project,  yo can use the following two classes
+
+#### GCOpenTexturePackerSource
+This one works for pack (from texture packer), in the constructor of your GCState put the following code
+>this.setGraphicsSourceManager(new GCOpenTexturePackerSource("pack_name", "item_from_pack"));
+
+That's all, now your state is represented by that Sprite
+
+
+
+
 ## Some Features
  * Models
  * Layers
