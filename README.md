@@ -141,12 +141,16 @@ In order to add sprites, stylesheets, packs and other graohics GCGraphicsSources
 
 #### GCOpenTexturePackerSource
 This one works for pack (from texture packer), in the constructor of your GCState put the following code
->this.setGraphicsSourceManager(new GCOpenTexturePackerSource("pack_name", "item_from_pack"));
+> this.setGraphicsSourceManager(new GCOpenTexturePackerSource("pack_name", "item_from_pack"));
 
 That's all, now your state is represented by that Sprite
 
+#### GCTextureSource
+This one takes one Texture or TextureRegion, in the constructor of your GCState put the following code
 
+> this.setGraphicsSourceManager(new GCTextureSource("base_image"));
 
+That's all, now your state is represented by that Sprite
 
 ## Some Features
  * Models
