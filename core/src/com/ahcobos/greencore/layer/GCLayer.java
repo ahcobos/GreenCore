@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import com.ahcobos.greencore.gcmodel.GCModel;
 import com.ahcobos.greencore.renderer.GCRenderer;
+import com.badlogic.gdx.Game;
 
 /**
  * @author ahcobos
@@ -19,4 +20,6 @@ public abstract class GCLayer {
 	public abstract void removeElement(String key);
 	public abstract GCRenderer getRenderer();
 	public abstract void setRenderer(GCRenderer mRenderer);
+	public abstract Game getGame();
+	public abstract void setGame(Game mGame);
 }

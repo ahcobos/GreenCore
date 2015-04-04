@@ -5,6 +5,7 @@ import java.util.HashMap;
 import com.ahcobos.greencore.gcmodel.GCModel;
 import com.ahcobos.greencore.renderer.GCBaseLayerRenderer;
 import com.ahcobos.greencore.renderer.GCRenderer;
+import com.badlogic.gdx.Game;
 
 /**
  * @author ahcobos
@@ -15,6 +16,14 @@ public class GCBaseLayer extends GCLayer{
 	protected String name;
 	protected HashMap<String, GCModel> elements;
 	protected GCRenderer renderer;
+	protected Game game;
+	
+	public GCBaseLayer(String name, Game mGame) {
+		this.name = name;
+		this.elements = new HashMap<String, GCModel>();
+		this.renderer = new GCBaseLayerRenderer(this);
+		this.game = mGame;
+	}
 	
 	public GCBaseLayer(String name) {
 		this.name = name;
@@ -61,6 +70,16 @@ public class GCBaseLayer extends GCLayer{
 	@Override
 	public void setRenderer(GCRenderer mRenderer) {
 		this.renderer = mRenderer;
+	}
+
+	@Override
+	public Game getGame() {
+			return this.game;
+	}
+
+	@Override
+	public void setGame(Game mGame) {
+		this.game = mGame;
 	}
 
 }
