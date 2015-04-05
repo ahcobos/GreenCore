@@ -175,7 +175,7 @@ public class AssetsLoaderModel{
 	
 	public static void addPack(String packLocation, String key)
 	{
-		TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("and_engine.pack"));
+		TextureAtlas atlas = new TextureAtlas(Gdx.files.internal(packLocation));
 		AssetsLoaderModel.packs.put(key, atlas);
 	}
 	
