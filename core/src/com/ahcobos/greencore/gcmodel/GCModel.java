@@ -13,10 +13,11 @@ import com.badlogic.gdx.math.Vector2;
  * @since 2014-10-29 13:02:35
  */
 public abstract class GCModel {
-	public abstract Sprite getSprite();
+	
+	//=================================
+	//getters
+	//=================================
 	public abstract HashMap<String, GCState> getStates();	
-	public abstract void addState(GCState state, String key);
-	public abstract void setCurrentState(String key);
 	public abstract GCState getCurrentState();
 	public abstract float getX();
 	public abstract float getY();
@@ -26,13 +27,28 @@ public abstract class GCModel {
 	public abstract float getRotation();
 	public abstract float getScaleX();
 	public abstract float getScaleY();
-	public abstract void draw(Batch batch);
-	public abstract Rectangle getBoundingRectangle();
+
 	
 	//=================================
 	//setters 
 	//=================================
 	
 	public abstract void setPosition(Vector2 newPos);
+	public abstract void setCurrentState(String key);
+	public abstract void setX(float x);
+	public abstract void setY(float y);
+	public abstract void setOriginX(float originX);
+	public abstract void setOriginY(float originY);
+	public abstract void setRotation(float rotation);
+	public abstract void setScaleX(float scaleX);
+	public abstract void setScaleY(float scaleY);
 	
+	//=================================
+	// Methods
+	//=================================
+	
+	public abstract void addState(GCState state, String key);
+	public abstract void draw(Batch batch);
+	public abstract Rectangle getBoundingRectangle();
+	public abstract Sprite getSprite();
 }
