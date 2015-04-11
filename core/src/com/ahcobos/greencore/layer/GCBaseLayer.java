@@ -1,6 +1,8 @@
 package com.ahcobos.greencore.layer;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
 import com.ahcobos.greencore.gcmodel.GCModel;
 import com.ahcobos.greencore.renderer.GCBaseLayerRenderer;
@@ -13,10 +15,18 @@ import com.badlogic.gdx.Game;
  */
 public class GCBaseLayer extends GCLayer{
 	
+	//=================================
+	// fileds
+	//=================================
+	
 	protected String name;
 	protected HashMap<String, GCModel> elements;
 	protected GCRenderer renderer;
 	protected Game game;
+	
+	//=================================
+	// constructors
+	//=================================
 	
 	public GCBaseLayer(String name, Game mGame) {
 		this.name = name;
@@ -31,26 +41,56 @@ public class GCBaseLayer extends GCLayer{
 		this.renderer = new GCBaseLayerRenderer(this);
 	}
 
+	//=================================
+	//getters
+	//=================================
+	
 	public String getName() {
 		return name;
-	}
-	
-	public void update(){}
-
-	@Override
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	@Override
 	public HashMap<String, GCModel> getElements() {
 		return this.elements;
 	}
+	
+	@Override
+	public GCRenderer getRenderer() {
+		return this.renderer;
+	}
+	
+	@Override
+	public Game getGame() {
+			return this.game;
+	}
 
+	//=================================
+	//setters 
+	//=================================
+	
 	@Override
 	public void setElements(HashMap<String, GCModel> elements) {
 		this.elements = elements;
 	}
+	
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	@Override
+	public void setRenderer(GCRenderer mRenderer) {
+		this.renderer = mRenderer;
+	}
+	
+	@Override
+	public void setGame(Game mGame) {
+		this.game = mGame;
+	}
+	
+	//=================================
+	// Methods
+	//=================================
 
 	@Override
 	public void addElement(String hash, GCModel element) {
@@ -63,23 +103,16 @@ public class GCBaseLayer extends GCLayer{
 	}
 
 	@Override
-	public GCRenderer getRenderer() {
-		return this.renderer;
+	public void preUpdate(float deltaTime) {
+		for (String key : this.getElements().keySet()) {
+			this.getElements().get(key).doUpdate(deltaTime);
+		}
 	}
 
 	@Override
-	public void setRenderer(GCRenderer mRenderer) {
-		this.renderer = mRenderer;
-	}
-
-	@Override
-	public Game getGame() {
-			return this.game;
-	}
-
-	@Override
-	public void setGame(Game mGame) {
-		this.game = mGame;
+	public void update(float deltaTime) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

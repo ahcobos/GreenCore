@@ -51,4 +51,16 @@ public abstract class GCModel {
 	public abstract void draw(Batch batch);
 	public abstract Rectangle getBoundingRectangle();
 	public abstract Sprite getSprite();
+	public abstract void preUpdate(float deltaTime);
+	public abstract void update(float deltaTime);
+	
+	//=================================
+	// TemplateMethod
+	//=================================
+	
+	public void doUpdate(float deltaTime)
+	{
+		this.preUpdate(deltaTime);
+		this.update(deltaTime);
+	}
 }

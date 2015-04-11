@@ -13,7 +13,8 @@ import com.badlogic.gdx.Game;
 public abstract class GCLayer {
 	public abstract String getName();
 	public abstract void setName(String name);
-	public abstract void update();
+	public abstract void preUpdate(float deltaTime);
+	public abstract void update(float deltaTime);
 	public abstract HashMap<String, GCModel> getElements();
 	public abstract void setElements(HashMap<String, GCModel> elements);
 	public abstract void addElement(String key, GCModel element);
@@ -22,4 +23,14 @@ public abstract class GCLayer {
 	public abstract void setRenderer(GCRenderer mRenderer);
 	public abstract Game getGame();
 	public abstract void setGame(Game mGame);
+	
+	//=================================
+	// TemplateMethod
+	//=================================
+	
+	public void doUpdate(float deltaTime)
+	{
+		this.preUpdate(deltaTime);
+		this.update(deltaTime);
+	}
 }

@@ -21,5 +21,16 @@ public abstract class GCScreen  implements Screen{
 	public abstract void setCamera(Camera mCamera);
 	public abstract SpriteBatch getBatch();
 	public abstract void setBatch(SpriteBatch mBatch);
-
+	public abstract void preUpdate(float deltaTime);
+	public abstract void update(float deltaTime);
+	
+	//=================================
+	// TemplateMethod
+	//=================================
+	
+	public void doUpdate(float deltaTime)
+	{
+		this.preUpdate(deltaTime);
+		this.update(deltaTime);
+	}
 }

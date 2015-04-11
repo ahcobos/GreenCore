@@ -1,7 +1,10 @@
 package com.ahcobos.greencore.layer;
 
+import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.Map.Entry;
 
+import com.ahcobos.greencore.gcmodel.GCModel;
 import com.ahcobos.greencore.inputprocesors.GCGestureListener;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -63,6 +66,7 @@ public class GCBaseScreen extends GCScreen {
 
 	@Override
 	public void render(float delta) { 
+		this.doUpdate(delta);
 		this.getCamera().update();
 		this.batch.setProjectionMatrix(this.mCamera.combined);
 		this.batch.begin();
@@ -125,5 +129,18 @@ public class GCBaseScreen extends GCScreen {
 
 	public void setmGame(Game mGame) {
 		this.mGame = mGame;
+	}
+	
+	@Override
+	public void preUpdate(float deltaTime)
+	{
+		for (String key : this.mLayers.keySet()) {
+			this.mLayers.get(key).doUpdate(deltaTime);
+		}
+	}
+
+	@Override
+	public void update(float deltaTime) {
+		// TODO Auto-generated method stub
 	}
 }

@@ -169,4 +169,16 @@ public class GCBaseModel extends GCModel {
 	public Rectangle getBoundingRectangle() {
 		return this.getSprite().getBoundingRectangle();
 	}
+
+	@Override
+	public void preUpdate(float deltaTime) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(float deltaTime) {
+		// TODO Auto-generated method stub
+		
+	}
 }
