@@ -30,6 +30,8 @@ public class GCBaseModel extends GCModel {
 	public GCBaseModel() {
 		this.states = new HashMap<String, GCState>();
 		this.position = new Vector2(0,0);
+		this.setScaleX(1f);
+		this.setScaleY(1f);
 	}
 	
 	//=================================
@@ -159,7 +161,7 @@ public class GCBaseModel extends GCModel {
 		Sprite toDraw = this.getCurrentState().getSprite();
 		toDraw.setPosition(getX(), getY());
 		toDraw.setRotation(this.getRotation());
-//		toDraw.setScale(getScaleX(), getScaleY());
+		toDraw.setScale(getScaleX(), getScaleY());
 		toDraw.draw(batch);
 	}
 	
