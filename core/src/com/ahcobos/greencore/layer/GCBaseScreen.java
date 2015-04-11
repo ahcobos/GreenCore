@@ -58,7 +58,7 @@ public class GCBaseScreen extends GCScreen {
 
 	@Override
 	public void setCamera(Camera mCamera) {
-		this.setCamera(mCamera);
+		this.mCamera = mCamera;
 	}
 
 	@Override
