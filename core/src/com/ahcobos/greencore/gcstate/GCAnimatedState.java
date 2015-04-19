@@ -14,9 +14,11 @@ public class GCAnimatedState extends GCBaseState {
 
 	private boolean isLoop;
 	private float stateTime;
+	private float delay;
 
 	public GCAnimatedState(){
 		this.isLoop = true;
+		this.delay = 0;
 	}
 
 	public GCAnimatedState(Animation a, boolean isLoop)
@@ -44,7 +46,15 @@ public class GCAnimatedState extends GCBaseState {
 	public Sprite getSprite()
 	{
 		stateTime += Gdx.graphics.getDeltaTime();
-		return new Sprite(animation.getKeyFrame(stateTime, this.getIsLoop()));
+		return new Sprite(animation.getKeyFrame(stateTime + this.delay , this.getIsLoop()));
+	}
+
+	public float getDelay() {
+		return delay;
+	}
+
+	public void setDelay(float delay) {
+		this.delay = delay;
 	}
 
 	public void setAnimation(Animation animation) {
