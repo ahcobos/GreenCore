@@ -22,17 +22,17 @@ public class GCBaseLayer extends GCLayer{
 	protected String name;
 	protected HashMap<String, GCModel> elements;
 	protected GCRenderer renderer;
-	protected Game game;
+	protected GCScreen mScreen;
 	
 	//=================================
 	// constructors
 	//=================================
 	
-	public GCBaseLayer(String name, Game mGame) {
+	public GCBaseLayer(String name, GCScreen mScreen) {
 		this.name = name;
 		this.elements = new HashMap<String, GCModel>();
 		this.renderer = new GCBaseLayerRenderer(this);
-		this.game = mGame;
+		this.mScreen = mScreen;
 	}
 	
 	public GCBaseLayer(String name) {
@@ -60,8 +60,8 @@ public class GCBaseLayer extends GCLayer{
 	}
 	
 	@Override
-	public Game getGame() {
-			return this.game;
+	public GCScreen getScreen() {
+			return this.mScreen;
 	}
 
 	//=================================
@@ -84,8 +84,8 @@ public class GCBaseLayer extends GCLayer{
 	}
 	
 	@Override
-	public void setGame(Game mGame) {
-		this.game = mGame;
+	public void setScreen(GCScreen mScreen) {
+		this.mScreen = mScreen;
 	}
 	
 	//=================================

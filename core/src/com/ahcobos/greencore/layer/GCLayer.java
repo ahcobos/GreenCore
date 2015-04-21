@@ -21,8 +21,8 @@ public abstract class GCLayer {
 	public abstract void removeElement(String key);
 	public abstract GCRenderer getRenderer();
 	public abstract void setRenderer(GCRenderer mRenderer);
-	public abstract Game getGame();
-	public abstract void setGame(Game mGame);
+	public abstract GCScreen getScreen();
+	public abstract void setScreen(GCScreen mGame);
 	
 	//=================================
 	// TemplateMethod
