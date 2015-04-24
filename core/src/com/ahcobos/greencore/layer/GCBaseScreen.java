@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
+import com.ahcobos.greencore.game.GCGame;
 import com.ahcobos.greencore.gcmodel.GCModel;
 import com.ahcobos.greencore.inputprocesors.GCGestureListener;
 import com.badlogic.gdx.Game;
@@ -22,9 +23,9 @@ public class GCBaseScreen extends GCScreen {
 	private LinkedHashMap<String, GCLayer> mLayers;
 	private Camera mCamera;
 	private SpriteBatch batch;
-	private Game mGame;
+	private GCGame mGame;
 	
-	public GCBaseScreen(Game mGame) {
+	public GCBaseScreen(GCGame mGame) {
 		this.mLayers = new LinkedHashMap<String, GCLayer>();
 		this.batch = new SpriteBatch();
 		this.mCamera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
@@ -122,15 +123,6 @@ public class GCBaseScreen extends GCScreen {
 		this.batch = mBatch;
 	}
 	
-
-	public Game getmGame() {
-		return mGame;
-	}
-
-	public void setmGame(Game mGame) {
-		this.mGame = mGame;
-	}
-	
 	@Override
 	public void preUpdate(float deltaTime)
 	{
@@ -142,5 +134,20 @@ public class GCBaseScreen extends GCScreen {
 	@Override
 	public void update(float deltaTime) {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void setScreen(String key) {
+		this.getMGame().setScreen(key);
+	}
+
+	@Override
+	public GCGame getMGame() {
+		return (GCGame) mGame;
+	}
+
+	@Override
+	public void setMGame(GCGame mGame) {
+		this.mGame = mGame;
 	}
 }

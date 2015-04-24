@@ -2,6 +2,7 @@ package com.ahcobos.greencore.layer;
 
 import java.util.LinkedHashMap;
 
+import com.ahcobos.greencore.game.GCGame;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -23,6 +24,9 @@ public abstract class GCScreen  implements Screen{
 	public abstract void setBatch(SpriteBatch mBatch);
 	public abstract void preUpdate(float deltaTime);
 	public abstract void update(float deltaTime);
+	public abstract void setScreen(String key);
+	public abstract GCGame getMGame();
+	public abstract void setMGame(GCGame mGame);
 	
 	//=================================
 	// TemplateMethod
