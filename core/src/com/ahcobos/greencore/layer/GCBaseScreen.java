@@ -1,18 +1,14 @@
 package com.ahcobos.greencore.layer;
 
-import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.Map.Entry;
 
-import com.ahcobos.greencore.gcmodel.GCModel;
-import com.ahcobos.greencore.inputprocesors.GCGestureListener;
+import com.ahcobos.greencore.game.GCGame;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.input.GestureDetector;
 
 /**
  * @author ahcobos
@@ -22,9 +18,9 @@ public class GCBaseScreen extends GCScreen {
 	private LinkedHashMap<String, GCLayer> mLayers;
 	private Camera mCamera;
 	private SpriteBatch batch;
-	private Game mGame;
+	private GCGame mGame;
 	
-	public GCBaseScreen(Game mGame) {
+	public GCBaseScreen(GCGame mGame) {
 		this.mLayers = new LinkedHashMap<String, GCLayer>();
 		this.batch = new SpriteBatch();
 		this.mCamera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
@@ -123,12 +119,12 @@ public class GCBaseScreen extends GCScreen {
 	}
 	
 
-	public Game getmGame() {
+	public GCGame getmGame() {
 		return mGame;
 	}
 
 	public void setmGame(Game mGame) {
-		this.mGame = mGame;
+		this.mGame = (GCGame)mGame;
 	}
 	
 	@Override

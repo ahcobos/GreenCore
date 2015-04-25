@@ -110,6 +110,7 @@ public class GCBaseState extends GCState {
 		{
 			return this.sprite;
 		}
+		
 		this.sprite = this.getGraphicsSourceManager().buildSprite();
 		return this.sprite;
 	}

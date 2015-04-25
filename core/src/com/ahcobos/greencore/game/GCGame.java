@@ -23,7 +23,7 @@ public class GCGame extends Game {
 		
 	}
 	
-	public void setScreen (String key) 
+	public void setScreen(String key) 
 	{
 		super.setScreen(this.getScreens().get(key));
 		Gdx.input.setInputProcessor(new GestureDetector(new GCGestureListener((GCBaseScreen) this.getScreens().get(key))));
@@ -31,10 +31,10 @@ public class GCGame extends Game {
 	
 	public HashMap<String, GCScreen> getScreens()
 	{
-		if(this.screens == null)
-		{
+		if(this.screens == null){
 			this.screens = new HashMap<String, GCScreen>();
 		}
+		
 		return this.screens;
 	}
 	
@@ -47,4 +47,5 @@ public class GCGame extends Game {
 		if(!this.getScreens().containsKey(key))
 			screens.put(key, screen);
 	}
+	
 }

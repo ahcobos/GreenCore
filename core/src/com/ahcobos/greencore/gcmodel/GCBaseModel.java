@@ -15,13 +15,14 @@ import com.badlogic.gdx.math.Vector2;
 public class GCBaseModel extends GCModel {
 	
 	//=================================
-	// fileds
+	// fields
 	//=================================
 	private HashMap<String,GCState> states ;
 	private GCState currentState;
 	private float originX, originY;
 	private float rotation, scaleX, scaleY;
 	private Vector2 position;
+	private Sprite toDraw;
 	
 	//=================================
 	// constructors
@@ -40,7 +41,12 @@ public class GCBaseModel extends GCModel {
 	
 	@Override
 	public Sprite getSprite() {
-		return this.getCurrentState().getSprite();
+		toDraw = this.getCurrentState().getSprite();
+		toDraw.setPosition(getX(), getY());
+		toDraw.setRotation(this.getRotation());
+		toDraw.setScale(getScaleX(), getScaleY());		
+		toDraw.setOrigin(getX(), getY());
+		return toDraw;
 	}
 	
 	@Override
@@ -157,17 +163,14 @@ public class GCBaseModel extends GCModel {
 	}
 
 	@Override
-	public void draw(Batch batch) {
-		Sprite toDraw = this.getCurrentState().getSprite();
-		toDraw.setPosition(getX(), getY());
-		toDraw.setRotation(this.getRotation());
-		toDraw.setScale(getScaleX(), getScaleY());
-		toDraw.draw(batch);
+	public void draw(Batch batch){
+		getSprite().draw(batch);
 	}
+	
 	
 	@Override
 	public Rectangle getBoundingRectangle() {
-		return this.getSprite().getBoundingRectangle();
+		return getSprite().getBoundingRectangle();
 	}
 
 	@Override
