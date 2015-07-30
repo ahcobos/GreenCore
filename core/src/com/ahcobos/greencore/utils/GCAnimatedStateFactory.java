@@ -10,11 +10,11 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class GCAnimatedStateFactory{
 	
-	public GCState state;
+	public GCAnimatedState state;
 	float frameDuration = 0.9f;
 	
 	//With texture		
-	public GCState getAnimatedState(Texture t, int cols){
+	public GCAnimatedState getAnimatedState(Texture t, int cols){
 		int regionWidth = t.getWidth()/cols;
 		TextureRegion []textureRegion = new TextureRegion[cols];
 				
@@ -23,11 +23,11 @@ public class GCAnimatedStateFactory{
 		}
 		
 		Animation a = new Animation(frameDuration, textureRegion);
-		state = new GCAnimatedState(a);
+		GCAnimatedState state = new GCAnimatedState(a);
 		return state;
 	}
 	
-	public GCState getAnimatedState(Texture t, int cols, float frameDuration, boolean isLoop){
+	public GCAnimatedState getAnimatedState(Texture t, int cols, float frameDuration, boolean isLoop){
 		int regionWidth = t.getWidth()/cols;
 		TextureRegion []textureRegion = new TextureRegion[cols];
 				
@@ -36,11 +36,11 @@ public class GCAnimatedStateFactory{
 		}
 		
 		Animation a = new Animation(frameDuration, textureRegion);
-		state = new GCAnimatedState(a, isLoop);		
+		GCAnimatedState state = new GCAnimatedState(a, isLoop);		
 		return state;
 	}
 	
-	public GCState getAnimatedState(Texture t, int cols, float frameDuration){
+	public GCAnimatedState getAnimatedState(Texture t, int cols, float frameDuration){
 		TextureRegion []textureRegion = new TextureRegion[cols];
 		int regionWidth = t.getWidth()/cols;
 		
@@ -49,13 +49,13 @@ public class GCAnimatedStateFactory{
 		}
 		
 		Animation a = new Animation(frameDuration, textureRegion);
-		state = new GCAnimatedState(a);		
+		GCAnimatedState state = new GCAnimatedState(a);		
 
 		return state;
 	}
 	
 	//With TextureRegion 
-	public GCState getAnimatedState(TextureRegion tr, int cols){
+	public GCAnimatedState getAnimatedState(TextureRegion tr, int cols){
 		int regionWidth = tr.getRegionWidth()/cols;
 		TextureRegion []textureRegion = new TextureRegion[cols];
 				
@@ -64,12 +64,12 @@ public class GCAnimatedStateFactory{
 		}
 		
 		Animation a = new Animation(frameDuration, textureRegion);
-		state = new GCAnimatedState(a);
+		GCAnimatedState state = new GCAnimatedState(a);
 		
 		return state;
 	}	
 	
-	public GCState getAnimatedState(TextureRegion tr, int cols, float frameDuration){		
+	public GCAnimatedState getAnimatedState(TextureRegion tr, int cols, float frameDuration){		
 		int regionWidth = tr.getRegionWidth()/cols;
 		TextureRegion []textureRegion = new TextureRegion[cols];
 				
@@ -78,12 +78,12 @@ public class GCAnimatedStateFactory{
 		}
 		
 		Animation a = new Animation(frameDuration, textureRegion);
-		state = new GCAnimatedState(a);
+		GCAnimatedState state = new GCAnimatedState(a);
 				
 		return state;
 	}
 	
-	public GCState getAnimatedState(TextureRegion tr, int cols, float frameDuration, boolean isLoop){
+	public GCAnimatedState getAnimatedState(TextureRegion tr, int cols, float frameDuration, boolean isLoop){
 		int regionWidth = tr.getRegionWidth()/cols;
 		TextureRegion []textureRegion = new TextureRegion[cols];
 				
@@ -92,7 +92,7 @@ public class GCAnimatedStateFactory{
 		}
 		
 		Animation a = new Animation(frameDuration, textureRegion);
-		state = new GCAnimatedState(a, isLoop);		
+		GCAnimatedState state = new GCAnimatedState(a, isLoop);		
 		return state;
 	}
 	
@@ -102,20 +102,20 @@ public class GCAnimatedStateFactory{
 		return state;
 	}
 	
-	public GCState getAnimatedState(TextureRegion[] tr, float frameDuration){
+	public GCAnimatedState getAnimatedState(TextureRegion[] tr, float frameDuration){
 		Animation a = new Animation(frameDuration, tr);
-		state = new GCAnimatedState(a);				
+		GCAnimatedState state = new GCAnimatedState(a);				
 		return state;
 	}
 	
-	public GCState getAnimatedState(TextureRegion[] tr){
+	public GCAnimatedState getAnimatedState(TextureRegion[] tr){
 		Animation a = new Animation(frameDuration, tr);
-		state = new GCAnimatedState(a);		
+		GCAnimatedState state = new GCAnimatedState(a);		
 		return state;
 	}
 	
 	//With File Handle resource
-	public GCState getAnimatedState(FileHandle f, int cols, float frameDuration, boolean isLoop){
+	public GCAnimatedState getAnimatedState(FileHandle f, int cols, float frameDuration, boolean isLoop){
 		Texture t = new Texture(f);
 		TextureRegion []textureRegion = new TextureRegion[cols];
 		int regionWidth = t.getWidth()/cols;
@@ -125,11 +125,11 @@ public class GCAnimatedStateFactory{
 		}
 		
 		Animation a = new Animation(frameDuration, textureRegion);
-		state = new GCAnimatedState(a, isLoop);		
+		GCAnimatedState state = new GCAnimatedState(a, isLoop);		
 		return state;
 	}
 	
-	public GCState getAnimatedState(FileHandle f, int cols, float frameDuration){
+	public GCAnimatedState getAnimatedState(FileHandle f, int cols, float frameDuration){
 		Texture t = new Texture(f);
 		TextureRegion []textureRegion = new TextureRegion[cols];
 		int regionWidth = t.getWidth()/cols;
@@ -139,13 +139,13 @@ public class GCAnimatedStateFactory{
 		}
 		
 		Animation a = new Animation(frameDuration, textureRegion);
-		state = new GCAnimatedState(a);	
+		GCAnimatedState state = new GCAnimatedState(a);	
 		
 		return state;
 	}
 
 
-	public GCState getAnimatedState(FileHandle f, int cols){
+	public GCAnimatedState getAnimatedState(FileHandle f, int cols){
 		Texture t = new Texture(f);
 		TextureRegion []textureRegion = new TextureRegion[cols];
 		int regionWidth = t.getWidth()/cols;
@@ -155,13 +155,13 @@ public class GCAnimatedStateFactory{
 		}
 		
 		Animation a = new Animation(frameDuration, textureRegion);
-		state = new GCAnimatedState(a);		
+		GCAnimatedState state = new GCAnimatedState(a);		
 		
 		return state;
 	}
 	
 	//With texture path
-	public GCState getAnimatedState(String internalPath, int cols, float frameDuration, boolean isLoop){
+	public GCAnimatedState getAnimatedState(String internalPath, int cols, float frameDuration, boolean isLoop){
 		
 		Texture t = new Texture(internalPath);
 		TextureRegion []textureRegion = new TextureRegion[cols];
@@ -172,11 +172,11 @@ public class GCAnimatedStateFactory{
 		}
 		
 		Animation a = new Animation(frameDuration, textureRegion);
-		state = new GCAnimatedState(a, isLoop);		
+		GCAnimatedState state = new GCAnimatedState(a, isLoop);		
 		return state;
 	}
 	
-	public GCState getAnimatedState(String internalPath, int cols, float frameDuration){
+	public GCAnimatedState getAnimatedState(String internalPath, int cols, float frameDuration){
 		Texture t = new Texture(internalPath);
 		TextureRegion []textureRegion = new TextureRegion[cols];
 		int regionWidth = t.getWidth()/cols;
@@ -186,13 +186,13 @@ public class GCAnimatedStateFactory{
 		}
 		
 		Animation a = new Animation(frameDuration, textureRegion);
-		state = new GCAnimatedState(a);	
+		GCAnimatedState state = new GCAnimatedState(a);	
 		
 		return state;
 	}
 
 
-	public GCState getAnimatedState(String internalPath, int cols){
+	public GCAnimatedState getAnimatedState(String internalPath, int cols){
 		Texture t = new Texture(internalPath);
 		TextureRegion []textureRegion = new TextureRegion[cols];
 		int regionWidth = t.getWidth()/cols;
@@ -202,7 +202,7 @@ public class GCAnimatedStateFactory{
 		}
 		
 		Animation a = new Animation(frameDuration, textureRegion);
-		state = new GCAnimatedState(a);		
+		GCAnimatedState state = new GCAnimatedState(a);		
 		
 		return state;
 	}	
