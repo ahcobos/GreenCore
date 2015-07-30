@@ -69,7 +69,7 @@ public class GCBaseScreen extends GCScreen {
 	public void render(float delta) { 
 		this.doUpdate(delta);
 		this.getCamera().update();
-		this.batch.setProjectionMatrix(this.mCamera.combined);
+		this.batch.setProjectionMatrix(this.getCamera().combined);
 		this.batch.begin();
 		Gdx.gl.glClearColor(1f, 1f, 1f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
