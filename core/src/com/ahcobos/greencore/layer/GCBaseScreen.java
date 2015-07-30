@@ -1,19 +1,19 @@
 package com.ahcobos.greencore.layer;
 
-import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.Map.Entry;
 
 import com.ahcobos.greencore.game.GCGame;
+<<<<<<< HEAD
 import com.ahcobos.greencore.gcmodel.GCModel;
 import com.ahcobos.greencore.inputprocesors.GCGestureListener;
+=======
+>>>>>>> 5a8322eaad0a544a41432a0fb6a4bb03377e16c7
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.input.GestureDetector;
 
 /**
  * @author ahcobos
@@ -121,6 +121,14 @@ public class GCBaseScreen extends GCScreen {
 	@Override
 	public void setBatch(SpriteBatch mBatch) {
 		this.batch = mBatch;
+	}
+
+	public GCGame getmGame() {
+		return mGame;
+	}
+
+	public void setmGame(Game mGame) {
+		this.mGame = (GCGame)mGame;
 	}
 	
 	@Override

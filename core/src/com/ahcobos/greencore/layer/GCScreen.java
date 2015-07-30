@@ -27,14 +27,14 @@ public abstract class GCScreen  implements Screen{
 	public abstract void setScreen(String key);
 	public abstract GCGame getMGame();
 	public abstract void setMGame(GCGame mGame);
+
 	
 	//=================================
 	// TemplateMethod
-	//=================================
-	
-	public void doUpdate(float deltaTime)
-	{
+	//=================================	
+	public void doUpdate(float deltaTime){
 		this.preUpdate(deltaTime);
 		this.update(deltaTime);
 	}
+	
 }
