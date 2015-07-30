@@ -6,12 +6,12 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class AnimationFactory {
 	
-	float duration = 0.9f;
+	public static float duration = 0.9f;
 	
 	/**
 	 * This method builds a TextureRegion array wich contains every frame for the animation
 	 */
-	public TextureRegion[] buildTextureFrames(Texture t, int cols, int rows)
+	public static TextureRegion[] buildTextureFrames(Texture t, int cols, int rows)
 	{
 //		this piece of code has been taken from https://github.com/libgdx/libgdx/wiki/2D-Animation
 		TextureRegion [] textureRegion = new TextureRegion[cols * rows];
@@ -22,6 +22,7 @@ public class AnimationFactory {
 			for(int j = 0; j < cols; j++)
 			{
 				textureRegion[index] = tmp[i][j];
+				index++;
 			}	
 		}
 		return textureRegion;
@@ -30,16 +31,16 @@ public class AnimationFactory {
 	/**
 	 * This method creates an Animation whit the given params
 	 */
-	public Animation buildAnimation(Texture t, int cols, int rows){
-		Animation a = new Animation(duration, this.buildTextureFrames(t, cols, rows));
+	public static Animation buildAnimation(Texture t, int cols, int rows){
+		Animation a = new Animation(duration, AnimationFactory.buildTextureFrames(t, cols, rows));
 		return a;
 	}
 	
 	/**
 	 * This method creates an Animation whit the given params
 	 */
-	public Animation buildAnimation(Texture t, int cols, int rows, float duration){
-		Animation a = new Animation(duration, this.buildTextureFrames(t, cols, rows));
+	public static Animation buildAnimation(Texture t, int cols, int rows, float duration){
+		Animation a = new Animation(duration, AnimationFactory.buildTextureFrames(t, cols, rows));
 		return a;
 	}
 }
