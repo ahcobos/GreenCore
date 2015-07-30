@@ -19,6 +19,7 @@ public class GCBaseModel extends GCModel {
 	//=================================
 	private HashMap<String,GCState> states ;
 	private GCState currentState;
+	private String currentStateKey;
 	private float originX, originY;
 	private float rotation, scaleX, scaleY;
 	private Vector2 position;
@@ -51,6 +52,11 @@ public class GCBaseModel extends GCModel {
 	@Override
 	public GCState getCurrentState() {
 		return this.currentState;
+	}
+	
+	@Override
+	public String getCurrentStateKey() {
+		return this.currentStateKey;
 	}
 
 	@Override
@@ -110,6 +116,7 @@ public class GCBaseModel extends GCModel {
 	public void setCurrentState(String key) {
 		//maybe it is better to just set the current state name +
 		this.currentState = this.getStates().get(key);
+		this.currentStateKey = key;
 	}
 	
 	@Override
@@ -158,7 +165,7 @@ public class GCBaseModel extends GCModel {
 
 	@Override
 	public void draw(Batch batch) {
-		Sprite toDraw = this.getCurrentState().getSprite();
+		Sprite toDraw = this.getSprite();
 		toDraw.setPosition(getX(), getY());
 		toDraw.setRotation(this.getRotation());
 		toDraw.setScale(getScaleX(), getScaleY());

@@ -19,6 +19,7 @@ public abstract class GCModel {
 	//=================================
 	public abstract HashMap<String, GCState> getStates();	
 	public abstract GCState getCurrentState();
+	public abstract String getCurrentStateKey();
 	public abstract float getX();
 	public abstract float getY();
 	public abstract Vector2 getPosition();
