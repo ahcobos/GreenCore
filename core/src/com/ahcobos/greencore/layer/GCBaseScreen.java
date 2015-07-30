@@ -3,11 +3,6 @@ package com.ahcobos.greencore.layer;
 import java.util.LinkedHashMap;
 
 import com.ahcobos.greencore.game.GCGame;
-<<<<<<< HEAD
-import com.ahcobos.greencore.gcmodel.GCModel;
-import com.ahcobos.greencore.inputprocesors.GCGestureListener;
-=======
->>>>>>> 5a8322eaad0a544a41432a0fb6a4bb03377e16c7
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
