@@ -56,16 +56,6 @@ nb-configuration.xml
 
 ## Gradle
 
-##.gradle
-##build/
-
-android/
-##build.gradle
-##core/build.gradle
-#desktop/
-#gradle/
-#gradlew
+.gradle/
+build/
 gradlew.bat
-html/
-ios/
-#settings.gradle
