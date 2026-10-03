@@ -1,6 +1,6 @@
 package com.ahcobos.greencore.sourcemanager;
 
-import com.ahcobos.greencore.assests.AssetsLoaderModel;
+import com.ahcobos.greencore.assets.AssetsLoaderModel;
 import com.ahcobos.greencore.exceptions.InvalidGraphicsSource;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;

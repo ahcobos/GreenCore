@@ -1,4 +1,4 @@
-package com.ahcobos.greencore.assests;
+package com.ahcobos.greencore.assets;
 
 import java.util.HashMap;
 

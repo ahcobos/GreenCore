@@ -1,6 +1,6 @@
 package com.ahcobos.greencore.gcstate;
 
-import com.ahcobos.greencore.assests.AssetsLoaderModel;
+import com.ahcobos.greencore.assets.AssetsLoaderModel;
 import com.ahcobos.greencore.exceptions.NullCurrentStateException;
 import com.ahcobos.greencore.sourcemanager.GCGraphicsSourceManager;
 import com.ahcobos.greencore.sourcemanager.GCTextureSource;
