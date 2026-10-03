@@ -1,0 +1,49 @@
+name: build
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  compile-core:
+    name: Compile core sources
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Cache libGDX dependencies
+        id: cache-libs
+        uses: actions/cache@v4
+        with:
+          path: ci-libs
+          key: libgdx-1.0.1
+
+      - name: Download libGDX 1.0.1 from Maven Central
+        if: steps.cache-libs.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p ci-libs
+          curl -fsSL -o ci-libs/gdx.jar \
+            https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx/1.0.1/gdx-1.0.1.jar
+          curl -fsSL -o ci-libs/gdx-box2d.jar \
+            https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-box2d/1.0.1/gdx-box2d-1.0.1.jar
+
+      - name: Compile core sources
+        run: |
+          find core/src -name '*.java' > sources.txt
+          echo "Compiling $(wc -l < sources.txt) Java files"
+          javac \
+            -source 1.7 -target 1.7 \
+            -Xlint:-options \
+            -d build/classes \
+            -classpath 'ci-libs/*' \
+            @sources.txt
